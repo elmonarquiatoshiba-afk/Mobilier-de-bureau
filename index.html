@@ -256,7 +256,6 @@ section{padding:70px 0}
   height:230px;position:relative;
   background-color:var(--line-soft);overflow:hidden;
 }
-/* CORRECTION : fond gris de secours pour éviter l'effet de superposition */
 .product-img-inner{
   position:absolute;inset:0;background-size:cover;background-position:center;
   background-color:var(--line-soft);
@@ -274,7 +273,6 @@ section{padding:70px 0}
   font-size:2.5rem;
   color:var(--ink-mute);
 }
-/* CORRECTION : le swap d'image ne s'active QUE si une 2e image existe */
 .product-img .img-b{opacity:0;transform:scale(1.05)}
 .product-card:hover .product-img.has-hover-img .img-b{opacity:1;transform:scale(1)}
 .product-card:hover .product-img.has-hover-img .img-a{opacity:0}
@@ -785,7 +783,7 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
   <section class="trust-bar">
     <div class="container trust-grid">
       <div class="trust-item"><i class="fas fa-truck-fast"></i> Livraison 48h</div>
-      <div class="trust-item"><i class="fas fa-shield-alt"></i> Paiement sécurisé</div>
+      <div class="trust-item"><i class="fas fa-hand-holding-usd"></i> Paiement à la livraison</div>
       <div class="trust-item"><i class="fas fa-undo-alt"></i> Retour 30 jours</div>
       <div class="trust-item"><i class="fas fa-headset"></i> Support 6j/7</div>
     </div>
@@ -897,7 +895,7 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
       </div>
     </div>
     <div class="footer-bottom">
-      © 2025 MobilierBureauPro — Tous droits réservés. Paiement sécurisé <i class="fas fa-lock" style="margin-left:6px"></i>
+      © 2025 MobilierBureauPro — Tous droits réservés. Paiement à la livraison <i class="fas fa-hand-holding-usd" style="margin-left:6px"></i>
     </div>
   </div>
 </footer>
@@ -1019,7 +1017,7 @@ const PRODUCTS = [
 let CART = JSON.parse(localStorage.getItem('mbp_cart') || '[]');
 let ORDERS = JSON.parse(localStorage.getItem('mbp_orders') || '[]');
 let FAVORITES = JSON.parse(localStorage.getItem('mbp_fav') || '[]');
-let CHECKOUT = { step:1, customer:{}, shipping:'std', payment:'card' };
+let CHECKOUT = { step:1, customer:{}, shipping:'std', payment:'cod' };
 
 function saveCart(){ localStorage.setItem('mbp_cart', JSON.stringify(CART)); updateCartCount(); }
 function saveOrders(){ localStorage.setItem('mbp_orders', JSON.stringify(ORDERS)); }
@@ -1322,45 +1320,60 @@ function renderCart(){
       <button class="btn" onclick="goToStep(4)">Continuer <i class="fas fa-arrow-right"></i></button>`;
   }
   else if (step === 4){
-    title.innerHTML = '<i class="fas fa-lock"></i> Paiement sécurisé';
+    title.innerHTML = '<i class="fas fa-hand-holding-usd"></i> Mode de paiement';
     body.innerHTML = stepsHtml + `
-      <div class="payment-methods">
-        <label class="choice-card ${CHECKOUT.payment==='card'?'selected':''}">
-          <input type="radio" name="pay" value="card" ${CHECKOUT.payment==='card'?'checked':''} onchange="CHECKOUT.payment='card';renderCart()">
-          <div><strong><i class="fas fa-credit-card"></i> Carte bancaire</strong><small>Stripe • 3D Secure</small></div>
+      <div class="choice-cards" style="grid-template-columns:1fr">
+        <label class="choice-card selected">
+          <input type="radio" name="pay" value="cod" checked>
+          <div>
+            <strong><i class="fas fa-truck"></i> Paiement à la livraison</strong>
+            <small>Payez en espèces ou par carte au moment de la réception</small>
+          </div>
         </label>
-        <label class="choice-card ${CHECKOUT.payment==='paypal'?'selected':''}">
-          <input type="radio" name="pay" value="paypal" ${CHECKOUT.payment==='paypal'?'checked':''} onchange="CHECKOUT.payment='paypal';renderCart()">
-          <div><strong><i class="fab fa-paypal"></i> PayPal</strong><small>Paiement en 4x</small></div>
-        </label>
-        <label class="choice-card ${CHECKOUT.payment==='transfer'?'selected':''}">
-          <input type="radio" name="pay" value="transfer" ${CHECKOUT.payment==='transfer'?'checked':''} onchange="CHECKOUT.payment='transfer';renderCart()">
-          <div><strong><i class="fas fa-university"></i> Virement</strong><small>IBAN par email</small></div>
-        </label>
-        ${CHECKOUT.customer.type==='pro' ? `
-        <label class="choice-card ${CHECKOUT.payment==='invoice'?'selected':''}">
-          <input type="radio" name="pay" value="invoice" ${CHECKOUT.payment==='invoice'?'checked':''} onchange="CHECKOUT.payment='invoice';renderCart()">
-          <div><strong><i class="fas fa-file-invoice"></i> Facturation 30j</strong><small>Réservé pros</small></div>
-        </label>` : ''}
+      </div>
+      <div style="background:var(--terracotta-light);border-radius:14px;padding:16px;margin-top:16px;display:flex;gap:12px;align-items:flex-start">
+        <i class="fas fa-info-circle" style="color:var(--terracotta);font-size:1.2rem;margin-top:2px"></i>
+        <div style="font-size:.86rem;color:var(--ink-soft)">
+          <strong style="color:var(--ink)">Comment ça marche ?</strong><br>
+          Le livreur vous contactera avant la livraison pour convenir d'un créneau. 
+          Vous réglerez le montant total en espèces ou par carte bancaire directement au livreur.
+          Un reçu vous sera remis sur place.
+        </div>
       </div>
       <div class="cart-totals">
         <div class="cart-totals-row"><span>Sous-total</span><span>${cartTotal().toFixed(2)}$</span></div>
         <div class="cart-totals-row"><span>Livraison</span><span>${shippingCost()===0?'Offerte':shippingCost().toFixed(2)+'$'}</span></div>
-        <div class="cart-totals-row total"><span>Total à payer</span><span>${(cartTotal()+shippingCost()).toFixed(2)}$</span></div>
+        <div class="cart-totals-row total"><span>Total à payer à la livraison</span><span>${(cartTotal()+shippingCost()).toFixed(2)}$</span></div>
       </div>`;
     foot.innerHTML = `
       <button class="btn btn-ghost" onclick="goToStep(3)">Retour</button>
-      <button class="btn btn-success" onclick="confirmOrder()"><i class="fas fa-lock"></i> Payer ${(cartTotal()+shippingCost()).toFixed(2)}$</button>`;
+      <button class="btn btn-success" onclick="confirmOrder()">
+        <i class="fas fa-check"></i> Confirmer la commande
+      </button>`;
   }
   else if (step === 5){
     const order = ORDERS[ORDERS.length-1];
-    title.innerHTML = '<i class="fas fa-check-circle"></i> Confirmation';
+    title.innerHTML = '<i class="fas fa-check-circle"></i> Commande confirmée';
     body.innerHTML = stepsHtml + `
       <div class="confirm-box">
         <i class="fas fa-check-circle check-icon"></i>
         <h3>Merci pour votre commande !</h3>
         <p style="color:var(--ink-mute);margin-top:8px">Un email de confirmation avec votre facture PDF vient de vous être envoyé.</p>
         <div class="order-number">N° ${order.number}</div>
+        
+        <div style="background:var(--terracotta-light);border-radius:14px;padding:16px;margin:16px 0;text-align:left">
+          <div style="display:flex;gap:12px;align-items:flex-start">
+            <i class="fas fa-hand-holding-usd" style="color:var(--terracotta);font-size:1.4rem;margin-top:2px"></i>
+            <div>
+              <strong style="color:var(--ink)">Paiement à la livraison</strong>
+              <p style="font-size:.86rem;color:var(--ink-soft);margin-top:4px">
+                Le montant de <strong>${order.total.toFixed(2)}$</strong> sera à régler directement au livreur 
+                (espèces ou carte bancaire). Préparez le montant exact si possible.
+              </p>
+            </div>
+          </div>
+        </div>
+
         <div class="tracking-box">
           <h4><i class="fas fa-truck"></i> Suivi de livraison</h4>
           <p style="font-size:.86rem;color:var(--ink-mute)">Transporteur : <strong>${order.carrier}</strong> · Estimation : <strong>${order.eta}</strong></p>
@@ -1418,7 +1431,8 @@ function confirmOrder(){
     total: total,
     customer: {...CHECKOUT.customer},
     shipping: CHECKOUT.shipping,
-    payment: CHECKOUT.payment,
+    payment: 'cod',
+    paymentLabel: 'Paiement à la livraison',
     carrier: CHECKOUT.shipping === 'assembly' ? 'Darty Pro' : 'Geodis',
     eta: new Date(Date.now() + 3*86400000).toLocaleDateString('fr-FR')
   };
@@ -1428,7 +1442,7 @@ function confirmOrder(){
   saveCart();
   renderProducts();
   goToStep(5);
-  showToast('Paiement accepté — commande ' + order.number,'success');
+  showToast('Commande ' + order.number + ' confirmée — paiement à la livraison','success');
 }
 
 /* ============================================================
