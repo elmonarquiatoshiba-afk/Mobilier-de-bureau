@@ -4,51 +4,31 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Mobilier Bureau Pro — Ergonomie, confort et design</title>
-<meta name="description" content="Boutique spécialisée en mobilier de bureau haut de gamme : bureaux, chaises ergonomiques, rangements. Livraison, suivi de commande, paiement sécurisé.">
-<meta name="keywords" content="mobilier bureau, chaise ergonomique, bureau assis-debout, rangement bureau, accessoires, B2B">
+<meta name="description" content="Boutique spécialisée en mobilier de bureau haut de gamme : bureaux, chaises ergonomiques, rangements.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --bg:#F3F4F6;
-  --bg-soft:#F8F9FA;
-  --white:#FFFFFF;
-  --ink:#0F1B2D;
-  --ink-soft:#4A5668;
-  --ink-mute:#8892A0;
-  --line:#E5E8ED;
-  --line-soft:#EEF1F5;
-  --blue:#1B3A5C;
-  --blue-dark:#122842;
-  --blue-light:#E8EEF5;
-  --blue-glow:rgba(27,58,92,0.18);
-  --sage:#6B8E7F;
-  --sage-light:#E8F0EC;
-  --terracotta:#C97B5A;
-  --terracotta-light:#FBEFE9;
-  --amber:#E8A33D;
-  --green:#3E9B6E;
-  --red:#D0483C;
+  --bg:#F3F4F6;--bg-soft:#F8F9FA;--white:#FFFFFF;
+  --ink:#0F1B2D;--ink-soft:#4A5668;--ink-mute:#8892A0;
+  --line:#E5E8ED;--line-soft:#EEF1F5;
+  --blue:#1B3A5C;--blue-dark:#122842;--blue-light:#E8EEF5;--blue-glow:rgba(27,58,92,0.18);
+  --sage:#6B8E7F;--sage-light:#E8F0EC;
+  --terracotta:#C97B5A;--terracotta-light:#FBEFE9;
+  --amber:#E8A33D;--green:#3E9B6E;--red:#D0483C;
   --shadow-xs:0 1px 2px rgba(15,27,45,0.04);
   --shadow-sm:0 4px 12px rgba(15,27,45,0.05);
   --shadow-md:0 10px 30px rgba(15,27,45,0.06);
   --shadow-lg:0 20px 40px rgba(15,27,45,0.08);
   --shadow-xl:0 30px 60px -12px rgba(15,27,45,0.14);
-  --radius:22px;
-  --radius-sm:14px;
-  --radius-pill:999px;
+  --radius:22px;--radius-sm:14px;--radius-pill:999px;
   --ease:cubic-bezier(.22,.9,.32,1);
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
-  background:var(--bg);color:var(--ink);line-height:1.55;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{text-decoration:none;color:inherit;transition:.25s var(--ease)}
 ul{list-style:none}
@@ -56,23 +36,7 @@ button{font-family:inherit;cursor:pointer;border:none;background:none;color:inhe
 h1,h2,h3,h4{font-weight:700;letter-spacing:-.025em;line-height:1.2}
 .container{max-width:1320px;margin:0 auto;padding:0 24px}
 
-/* ============ TOP BAR ============ */
-.top-bar{
-  background:linear-gradient(90deg,var(--blue-dark),var(--blue));
-  color:#fff;font-size:.78rem;padding:9px 0;text-align:center;
-  letter-spacing:.4px;font-weight:500;
-}
-.top-bar i{margin-right:6px;opacity:.9}
-
-/* ============ HEADER GLASSMORPHISM ============ */
-header{
-  position:sticky;top:0;z-index:200;
-  background:rgba(255,255,255,0.72);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
-  border-bottom:1px solid rgba(229,232,237,0.7);
-  transition:box-shadow .3s var(--ease);
-}
+header{position:sticky;top:0;z-index:200;background:rgba(255,255,255,0.72);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(229,232,237,0.7);transition:box-shadow .3s var(--ease)}
 header.scrolled{box-shadow:var(--shadow-sm)}
 .navbar{display:flex;justify-content:space-between;align-items:center;padding:16px 0;gap:24px;flex-wrap:wrap}
 .logo{font-size:1.35rem;font-weight:800;color:var(--blue);white-space:nowrap;letter-spacing:-.03em}
@@ -80,156 +44,47 @@ header.scrolled{box-shadow:var(--shadow-sm)}
 .nav-links{display:flex;gap:28px;font-weight:500;color:var(--ink-soft);font-size:.92rem;flex-wrap:wrap}
 .nav-links a{position:relative;padding:4px 0}
 .nav-links a:hover{color:var(--blue)}
-.nav-links a::after{
-  content:'';position:absolute;left:0;bottom:0;width:0;height:2px;
-  background:var(--blue);transition:width .3s var(--ease);border-radius:2px;
-}
-.nav-links a:hover::after{width:100%}
 .header-actions{display:flex;gap:10px;align-items:center;color:var(--ink-soft)}
-.icon-btn{
-  width:42px;height:42px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.05rem;position:relative;
-  transition:.25s var(--ease);
-}
+.icon-btn{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.05rem;position:relative;transition:.25s var(--ease)}
 .icon-btn:hover{background:var(--blue-light);color:var(--blue);transform:translateY(-1px)}
-.icon-btn.has-kbd{
-  width:auto;padding:0 14px;border-radius:var(--radius-pill);
-  gap:8px;background:var(--bg-soft);border:1px solid var(--line);
-}
-.icon-btn.has-kbd:hover{background:#fff;box-shadow:var(--shadow-xs)}
-.kbd{
-  font-size:.68rem;font-weight:600;padding:2px 7px;
-  background:#fff;border:1px solid var(--line);border-radius:6px;
-  color:var(--ink-mute);font-family:inherit;
-}
-.cart-count{
-  position:absolute;top:-4px;right:-4px;
-  background:var(--terracotta);color:#fff;font-size:.65rem;font-weight:700;
-  border-radius:50%;min-width:20px;height:20px;
-  display:flex;align-items:center;justify-content:center;padding:0 5px;
-  border:2px solid #fff;
-  animation:pop-in .4s var(--ease);
-}
-@keyframes pop-in{0%{transform:scale(0)}70%{transform:scale(1.25)}100%{transform:scale(1)}}
+.cart-count{position:absolute;top:-4px;right:-4px;background:var(--terracotta);color:#fff;font-size:.65rem;font-weight:700;border-radius:50%;min-width:20px;height:20px;display:flex;align-items:center;justify-content:center;padding:0 5px;border:2px solid #fff}
 
-/* ============ BOUTONS ============ */
-.btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:8px;
-  background:var(--blue);color:#fff;font-weight:600;
-  padding:13px 26px;border-radius:var(--radius-pill);
-  transition:.3s var(--ease);font-size:.9rem;letter-spacing:.1px;
-  position:relative;overflow:hidden;
-}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-weight:600;padding:13px 26px;border-radius:var(--radius-pill);transition:.3s var(--ease);font-size:.9rem;letter-spacing:.1px}
 .btn:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 12px 24px -8px var(--blue-glow)}
-.btn:active{transform:translateY(0)}
 .btn:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
 .btn-outline{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
 .btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light);box-shadow:none}
 .btn-ghost{background:var(--bg-soft);color:var(--ink)}
-.btn-ghost:hover{background:var(--line-soft)}
 .btn-small{padding:9px 16px;font-size:.82rem}
 .btn-block{width:100%}
 .btn-success{background:var(--green)}
 .btn-success:hover{background:#2e7d58}
 
-/* ============ HERO ============ */
 .hero{padding:70px 0 80px;position:relative;overflow:hidden}
-.hero::before{
-  content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;
-  background:radial-gradient(circle,var(--sage-light) 0%,transparent 70%);
-  border-radius:50%;z-index:0;opacity:.7;
-}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;background:radial-gradient(circle,var(--sage-light) 0%,transparent 70%);border-radius:50%;z-index:0;opacity:.7}
 .hero-grid{display:flex;align-items:center;gap:60px;flex-wrap:wrap;position:relative;z-index:1}
 .hero-content{flex:1 1 440px}
-.hero-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:#fff;color:var(--blue);
-  font-size:.78rem;font-weight:600;padding:8px 16px;border-radius:var(--radius-pill);
-  margin-bottom:24px;letter-spacing:.3px;
-  box-shadow:var(--shadow-xs);border:1px solid var(--line-soft);
-}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:#fff;color:var(--blue);font-size:.78rem;font-weight:600;padding:8px 16px;border-radius:var(--radius-pill);margin-bottom:24px;box-shadow:var(--shadow-xs);border:1px solid var(--line-soft)}
 .hero-badge i{color:var(--terracotta)}
-.hero h1{font-size:3.4rem;line-height:1.08;margin-bottom:22px;color:var(--ink);font-weight:800;letter-spacing:-.035em}
+.hero h1{font-size:3.4rem;line-height:1.08;margin-bottom:22px;font-weight:800;letter-spacing:-.035em}
 .hero h1 em{font-style:normal;color:var(--blue);position:relative}
-.hero h1 em::after{
-  content:'';position:absolute;left:0;bottom:4px;width:100%;height:10px;
-  background:var(--sage-light);z-index:-1;border-radius:4px;
-}
+.hero h1 em::after{content:'';position:absolute;left:0;bottom:4px;width:100%;height:10px;background:var(--sage-light);z-index:-1;border-radius:4px}
 .hero p{font-size:1.08rem;color:var(--ink-soft);margin-bottom:32px;max-width:520px}
 .hero-cta{display:flex;gap:12px;flex-wrap:wrap}
-.hero-image{
-  flex:1 1 440px;min-height:420px;border-radius:32px;
-  background:url('images/bureau-agent-1m20.jpg') center/cover;
-  background-color:var(--line-soft);
-  box-shadow:var(--shadow-xl);
-  position:relative;
-  animation:float 6s ease-in-out infinite;
-}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hero-image::after{
-  content:'';position:absolute;inset:0;border-radius:32px;
-  box-shadow:inset 0 0 0 1px rgba(255,255,255,0.15);
-}
+.hero-image{flex:1 1 440px;min-height:420px;border-radius:32px;background:url('images/bureau-agent-1m20.jpg') center/cover;background-color:var(--line-soft);box-shadow:var(--shadow-xl);position:relative}
 
-/* ============ SECTIONS ============ */
 section{padding:70px 0}
 .section-head{margin-bottom:48px;max-width:700px}
 .section-title{font-size:2.2rem;margin-bottom:12px;font-weight:800;letter-spacing:-.03em}
 .section-sub{color:var(--ink-soft);font-size:1.02rem}
-.eyebrow{
-  display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--sage);margin-bottom:12px;
-}
+.eyebrow{display:inline-block;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sage);margin-bottom:12px}
 
-/* ============ BENTO GRID ============ */
-.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:16px}
-.bento-card{
-  border-radius:24px;overflow:hidden;position:relative;cursor:pointer;
-  background-size:cover;background-position:center;
-  background-color:var(--line-soft);
-  transition:transform .5s var(--ease),box-shadow .5s var(--ease);
-  box-shadow:var(--shadow-sm);
-}
-.bento-card::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(180deg,transparent 40%,rgba(15,27,45,0.85) 100%);
-  transition:opacity .4s var(--ease);
-}
-.bento-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-xl)}
-.bento-card:hover::after{opacity:.95}
-.bento-content{
-  position:absolute;bottom:20px;left:22px;right:22px;z-index:2;color:#fff;
-  transform:translateY(4px);transition:transform .4s var(--ease);
-}
-.bento-card:hover .bento-content{transform:translateY(0)}
-.bento-content h3{font-size:1.25rem;margin-bottom:4px;font-weight:700}
-.bento-content p{font-size:.84rem;opacity:.85}
-.bento-content .arrow{
-  display:inline-flex;align-items:center;gap:6px;font-size:.8rem;
-  margin-top:8px;opacity:0;transition:opacity .3s var(--ease),transform .3s var(--ease);
-}
-.bento-card:hover .bento-content .arrow{opacity:1;transform:translateX(4px)}
-.bento-large{grid-column:span 2;grid-row:span 2}
-.bento-wide{grid-column:span 2}
-.bento-tall{grid-row:span 2}
-
-/* ============ FILTRES ============ */
 .catalogue{background:var(--bg)}
-.filters-panel{
-  background:rgba(255,255,255,0.85);
-  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-  border-radius:24px;padding:22px;margin-bottom:36px;
-  box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,0.6);
-}
+.filters-panel{background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-radius:24px;padding:22px;margin-bottom:36px;box-shadow:var(--shadow-sm);border:1px solid rgba(255,255,255,0.6)}
 .filters-row{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-end}
 .filter-item{display:flex;flex-direction:column;gap:6px;flex:1 1 160px;min-width:140px}
 .filter-item label{font-size:.74rem;font-weight:700;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.08em}
-.filter-item select,.filter-item input{
-  padding:11px 14px;border-radius:var(--radius-sm);
-  border:1.5px solid var(--line);font-family:inherit;font-size:.88rem;
-  background:#fff;color:var(--ink);outline:none;transition:.25s var(--ease);width:100%;
-}
+.filter-item select,.filter-item input{padding:11px 14px;border-radius:var(--radius-sm);border:1.5px solid var(--line);font-family:inherit;font-size:.88rem;background:#fff;color:var(--ink);outline:none;transition:.25s var(--ease);width:100%}
 .filter-item select:focus,.filter-item input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-glow)}
 .filter-check{display:flex;align-items:center;gap:8px;font-size:.88rem;color:var(--ink-soft);cursor:pointer;padding-top:22px;font-weight:500}
 .filter-check input{width:auto;accent-color:var(--blue);cursor:pointer}
@@ -241,51 +96,15 @@ section{padding:70px 0}
 .search-bar input:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-glow)}
 .search-bar i{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--ink-mute);pointer-events:none}
 
-/* ============ PRODUCT GRID ============ */
 .product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:28px}
-.product-card{
-  background:#fff;border-radius:24px;overflow:hidden;
-  box-shadow:var(--shadow-xs);transition:.4s var(--ease);
-  border:1px solid var(--line-soft);
-  display:flex;flex-direction:column;
-  animation:fade-up .5s var(--ease) both;
-}
-@keyframes fade-up{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.product-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-xs);transition:.4s var(--ease);border:1px solid var(--line-soft);display:flex;flex-direction:column}
 .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md);border-color:transparent}
-.product-img{
-  height:230px;position:relative;
-  background-color:var(--line-soft);overflow:hidden;
-}
-.product-img-inner{
-  position:absolute;inset:0;background-size:cover;background-position:center;
-  background-color:var(--line-soft);
-  transition:opacity .5s var(--ease),transform .7s var(--ease);
-}
-.product-img-inner.img-missing{
-  background-image:none !important;
-  background-color:var(--line);
-  display:flex;align-items:center;justify-content:center;
-}
-.product-img-inner.img-missing::after{
-  content:'\f03e';
-  font-family:'Font Awesome 6 Free';
-  font-weight:900;
-  font-size:2.5rem;
-  color:var(--ink-mute);
-}
-.product-img .img-b{opacity:0;transform:scale(1.05)}
-.product-card:hover .product-img.has-hover-img .img-b{opacity:1;transform:scale(1)}
-.product-card:hover .product-img.has-hover-img .img-a{opacity:0}
-.badge{
-  position:absolute;top:14px;left:14px;z-index:2;
-  font-size:.68rem;font-weight:700;padding:6px 12px;
-  border-radius:var(--radius-pill);letter-spacing:.04em;text-transform:uppercase;
-  backdrop-filter:blur(6px);
-}
+.product-img{height:230px;position:relative;background-color:var(--line-soft);overflow:hidden}
+.product-img-inner{position:absolute;inset:0;background-size:cover;background-position:center;background-color:var(--line-soft)}
+.badge{position:absolute;top:14px;left:14px;z-index:2;font-size:.68rem;font-weight:700;padding:6px 12px;border-radius:var(--radius-pill);letter-spacing:.04em;text-transform:uppercase}
 .badge-promo{background:var(--terracotta);color:#fff}
 .badge-stock-out{background:var(--red);color:#fff}
 .badge-stock-low{background:var(--amber);color:#fff}
-.badge-new{background:var(--sage);color:#fff}
 .product-info{padding:20px;flex:1;display:flex;flex-direction:column;gap:7px}
 .product-cat{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--sage);font-weight:700}
 .product-title{font-size:1.02rem;font-weight:700;line-height:1.35;color:var(--ink)}
@@ -300,44 +119,30 @@ section{padding:70px 0}
 .stock-info.in{color:var(--green)}
 .stock-info.low{color:var(--amber)}
 .stock-info.out{color:var(--red)}
-.stock-dot{width:8px;height:8px;border-radius:50%;background:currentColor;position:relative}
-.stock-info.in .stock-dot{animation:pulse-dot 2s ease-in-out infinite}
-@keyframes pulse-dot{
-  0%,100%{box-shadow:0 0 0 0 rgba(62,155,110,0.6)}
-  50%{box-shadow:0 0 0 6px rgba(62,155,110,0)}
-}
-.fav-btn{color:var(--ink-mute);font-size:1rem;transition:.25s var(--ease);width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.fav-btn:hover{background:var(--terracotta-light);color:var(--terracotta)}
-.fav-btn.active{color:var(--terracotta)}
+.stock-dot{width:8px;height:8px;border-radius:50%;background:currentColor}
 .product-cta{display:flex;gap:8px;margin-top:10px}
 .product-cta .btn{flex:1;padding:10px 14px;font-size:.82rem}
 
-/* ============ TRUST ============ */
 .trust-bar{background:#fff;padding:36px 0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
 .trust-grid{display:flex;flex-wrap:wrap;justify-content:space-around;gap:24px;text-align:center}
 .trust-item{display:flex;align-items:center;gap:12px;color:var(--ink-soft);font-size:.9rem;font-weight:500}
 .trust-item i{font-size:1.4rem;color:var(--sage);width:42px;height:42px;border-radius:50%;background:var(--sage-light);display:flex;align-items:center;justify-content:center;font-size:1.05rem}
 
-/* ============ BLOG ============ */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
 .blog-card{background:#fff;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-xs);transition:.4s var(--ease);border:1px solid var(--line-soft)}
 .blog-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-md)}
-.blog-img{height:180px;background-size:cover;background-position:center;transition:transform .6s var(--ease);background-color:var(--line-soft)}
-.blog-card:hover .blog-img{transform:scale(1.04)}
+.blog-img{height:180px;background-size:cover;background-position:center;background-color:var(--line-soft)}
 .blog-content{padding:22px}
 .blog-content h4{font-size:1.05rem;margin-bottom:8px;font-weight:700}
 .blog-content p{font-size:.88rem;color:var(--ink-soft);margin-bottom:14px}
-.blog-content a{color:var(--blue);font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:6px;transition:gap .25s var(--ease)}
-.blog-content a:hover{gap:10px}
+.blog-content a{color:var(--blue);font-weight:600;font-size:.88rem;display:inline-flex;align-items:center;gap:6px}
 
-/* ============ À PROPOS ============ */
 .about-flex{display:flex;gap:60px;align-items:center;flex-wrap:wrap}
 .about-text{flex:1 1 380px}
-.about-text h2{font-size:2.1rem;margin-bottom:20px;font-weight:800;letter-spacing:-.03em}
+.about-text h2{font-size:2.1rem;margin-bottom:20px;font-weight:800}
 .about-text p{color:var(--ink-soft);margin-bottom:18px;font-size:1.02rem}
 .about-img{flex:1 1 380px;min-height:360px;border-radius:32px;background:url('images/armoire-vitree-3-portes.jpg') center/cover;background-color:var(--line-soft);box-shadow:var(--shadow-xl)}
 
-/* ============ CONTACT ============ */
 .contact-section{background:#fff}
 .contact-grid{display:flex;gap:60px;flex-wrap:wrap}
 .contact-info{flex:1 1 300px}
@@ -347,273 +152,123 @@ section{padding:70px 0}
 .contact-form input,.contact-form textarea{padding:14px 18px;border-radius:var(--radius-sm);border:1.5px solid var(--line);font-family:inherit;font-size:.92rem;outline:none;background:var(--bg-soft);transition:.25s var(--ease)}
 .contact-form input:focus,.contact-form textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-glow);background:#fff}
 
-/* ============ FOOTER ============ */
 footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
 .footer-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;margin-bottom:44px}
 .footer-col h4{color:#fff;margin-bottom:18px;font-weight:600;font-size:.98rem}
 .footer-col a,.footer-col p{display:block;margin-bottom:10px;font-size:.87rem;color:#98A5B5}
-.footer-col a:hover{color:#fff;transform:translateX(3px)}
+.footer-col a:hover{color:#fff}
 .footer-bottom{border-top:1px solid #22303F;padding-top:24px;text-align:center;font-size:.82rem;color:#6B7A8C}
 
-/* ============ SLIDE-OVER PANIER ============ */
-.slideover-overlay{
-  position:fixed;inset:0;background:rgba(15,27,45,0.5);
-  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
-  z-index:900;opacity:0;pointer-events:none;transition:opacity .35s var(--ease);
-}
+.slideover-overlay{position:fixed;inset:0;background:rgba(15,27,45,0.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:900;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
 .slideover-overlay.active{opacity:1;pointer-events:auto}
-.slideover{
-  position:fixed;top:0;right:0;bottom:0;width:100%;max-width:520px;
-  background:#fff;z-index:901;
-  transform:translateX(100%);transition:transform .45s var(--ease);
-  display:flex;flex-direction:column;
-  box-shadow:-30px 0 60px rgba(15,27,45,0.2);
-}
+.slideover{position:fixed;top:0;right:0;bottom:0;width:100%;max-width:520px;background:#fff;z-index:901;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column;box-shadow:-30px 0 60px rgba(15,27,45,0.2)}
 .slideover.active{transform:translateX(0)}
-.slideover-head{
-  padding:22px 26px;border-bottom:1px solid var(--line-soft);
-  display:flex;justify-content:space-between;align-items:center;flex-shrink:0;
-}
+.slideover-head{padding:22px 26px;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:center;flex-shrink:0}
 .slideover-head h3{font-size:1.15rem;font-weight:700;display:flex;align-items:center;gap:10px}
 .slideover-head h3 i{color:var(--blue)}
-.slideover-close{
-  width:38px;height:38px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--ink-soft);font-size:1.1rem;transition:.25s var(--ease);
-}
+.slideover-close{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--ink-soft);font-size:1.1rem;transition:.25s var(--ease)}
 .slideover-close:hover{background:var(--bg-soft);color:var(--ink)}
 .slideover-body{padding:22px 26px;overflow-y:auto;flex:1}
-.slideover-foot{
-  padding:20px 26px;border-top:1px solid var(--line-soft);
-  flex-shrink:0;background:var(--bg-soft);
-}
+.slideover-foot{padding:20px 26px;border-top:1px solid var(--line-soft);flex-shrink:0;background:var(--bg-soft)}
 
-/* ============ MODALES ============ */
-.modal-overlay{
-  position:fixed;inset:0;background:rgba(15,27,45,0.55);
-  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
-  z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;
-  opacity:0;transition:opacity .3s var(--ease);
-}
+.modal-overlay{position:fixed;inset:0;background:rgba(15,27,45,0.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .3s var(--ease)}
 .modal-overlay.active{display:flex;opacity:1}
-.modal{
-  background:#fff;border-radius:28px;max-width:780px;width:100%;max-height:90vh;
-  overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);
-  transform:translateY(24px) scale(.98);transition:transform .4s var(--ease);
-}
+.modal{background:#fff;border-radius:28px;max-width:780px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px rgba(0,0,0,.3);transform:translateY(24px) scale(.98);transition:transform .4s var(--ease)}
 .modal-overlay.active .modal{transform:translateY(0) scale(1)}
-.modal-head{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:22px 28px;border-bottom:1px solid var(--line-soft);
-  position:sticky;top:0;background:#fff;z-index:2;
-  border-radius:28px 28px 0 0;
-}
+.modal-head{display:flex;justify-content:space-between;align-items:center;padding:22px 28px;border-bottom:1px solid var(--line-soft);position:sticky;top:0;background:#fff;z-index:2;border-radius:28px 28px 0 0}
 .modal-head h3{font-size:1.18rem;font-weight:700}
-.modal-close{
-  font-size:1.1rem;color:var(--ink-soft);width:38px;height:38px;
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  transition:.25s var(--ease);
-}
+.modal-close{font-size:1.1rem;color:var(--ink-soft);width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:.25s var(--ease)}
 .modal-close:hover{background:var(--bg-soft);color:var(--ink)}
 .modal-body{padding:26px 28px}
-.modal-foot{
-  padding:18px 28px;border-top:1px solid var(--line-soft);
-  display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;
-  position:sticky;bottom:0;background:#fff;border-radius:0 0 28px 28px;
-}
+.modal-foot{padding:18px 28px;border-top:1px solid var(--line-soft);display:flex;justify-content:flex-end;gap:12px;flex-wrap:wrap;position:sticky;bottom:0;background:#fff;border-radius:0 0 28px 28px}
 
-/* ============ COMMAND PALETTE ⌘K ============ */
-.cmdk-overlay{
-  position:fixed;inset:0;background:rgba(15,27,45,0.45);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  z-index:1500;display:none;align-items:flex-start;justify-content:center;
-  padding-top:12vh;opacity:0;transition:opacity .25s var(--ease);
-}
-.cmdk-overlay.active{display:flex;opacity:1}
-.cmdk{
-  background:#fff;border-radius:22px;width:100%;max-width:620px;
-  box-shadow:0 40px 80px rgba(0,0,0,.3);overflow:hidden;
-  transform:translateY(-16px) scale(.98);transition:transform .3s var(--ease);
-}
-.cmdk-overlay.active .cmdk{transform:translateY(0) scale(1)}
-.cmdk-input{
-  display:flex;align-items:center;gap:14px;padding:20px 24px;
-  border-bottom:1px solid var(--line-soft);
-}
-.cmdk-input i{color:var(--ink-mute);font-size:1.1rem}
-.cmdk-input input{
-  flex:1;border:none;outline:none;font-family:inherit;font-size:1rem;
-  background:transparent;color:var(--ink);
-}
-.cmdk-input input::placeholder{color:var(--ink-mute)}
-.cmdk-results{max-height:400px;overflow-y:auto;padding:10px}
-.cmdk-item{
-  display:flex;align-items:center;gap:14px;padding:12px 16px;
-  border-radius:14px;cursor:pointer;transition:.15s var(--ease);
-}
-.cmdk-item:hover,.cmdk-item.selected{background:var(--blue-light)}
-.cmdk-item i{color:var(--blue);width:36px;height:36px;border-radius:10px;background:var(--blue-light);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.cmdk-item-text{flex:1}
-.cmdk-item-text strong{display:block;font-size:.92rem;font-weight:600;color:var(--ink)}
-.cmdk-item-text small{font-size:.78rem;color:var(--ink-mute)}
-
-/* ============ CHECKOUT STEPS ============ */
 .checkout-steps{display:flex;gap:8px;margin-bottom:28px;flex-wrap:wrap}
-.step{
-  flex:1;min-width:70px;text-align:center;padding:12px 8px;
-  border-radius:14px;background:var(--bg-soft);
-  font-size:.74rem;font-weight:600;color:var(--ink-mute);
-  transition:.25s var(--ease);
-}
-.step.active{background:var(--blue);color:#fff;box-shadow:0 8px 16px -6px var(--blue-glow)}
+.step{flex:1;min-width:70px;text-align:center;padding:12px 8px;border-radius:14px;background:var(--bg-soft);font-size:.74rem;font-weight:600;color:var(--ink-mute);transition:.25s var(--ease)}
+.step.active{background:var(--blue);color:#fff}
 .step.done{background:var(--sage-light);color:var(--sage)}
 .step-num{display:block;font-size:1rem;margin-bottom:2px;font-weight:700}
 
-/* ============ PANIER ITEMS ============ */
-.cart-item{
-  display:grid;grid-template-columns:76px 1fr auto;gap:14px;
-  padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:center;
-}
+.cart-item{display:grid;grid-template-columns:76px 1fr auto;gap:14px;padding:16px 0;border-bottom:1px solid var(--line-soft);align-items:center}
 .cart-item:last-child{border-bottom:none}
 .cart-item-img{width:76px;height:76px;border-radius:14px;background-size:cover;background-position:center;background-color:var(--bg-soft)}
 .cart-item-info h4{font-size:.92rem;margin-bottom:3px;font-weight:600}
 .cart-item-info .meta{font-size:.76rem;color:var(--ink-mute);margin-bottom:6px}
 .qty-control{display:inline-flex;align-items:center;gap:8px;border:1.5px solid var(--line);border-radius:var(--radius-pill);padding:3px 10px;margin-top:4px}
-.qty-control button{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:700;font-size:.95rem;transition:.2s var(--ease)}
+.qty-control button{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--blue);font-weight:700;font-size:.95rem}
 .qty-control button:hover{background:var(--blue-light)}
 .qty-control span{min-width:22px;text-align:center;font-weight:700;font-size:.88rem}
 .cart-item-price{font-weight:800;color:var(--blue);text-align:right;font-size:.98rem}
-.cart-item-remove{color:var(--red);font-size:.76rem;margin-top:6px;text-align:right;cursor:pointer;display:flex;align-items:center;gap:4px;justify-content:flex-end;opacity:.7;transition:.2s var(--ease)}
+.cart-item-remove{color:var(--red);font-size:.76rem;margin-top:6px;text-align:right;cursor:pointer;display:flex;align-items:center;gap:4px;justify-content:flex-end;opacity:.7}
 .cart-item-remove:hover{opacity:1}
 .cart-empty{text-align:center;padding:50px 20px;color:var(--ink-mute)}
 .cart-empty i{font-size:3.5rem;color:var(--line);margin-bottom:18px}
 .cart-empty p{margin-bottom:20px}
-
 .cart-totals{background:var(--bg-soft);border-radius:16px;padding:20px;margin-top:20px}
 .cart-totals-row{display:flex;justify-content:space-between;padding:8px 0;font-size:.9rem;color:var(--ink-soft)}
 .cart-totals-row.total{border-top:1px solid var(--line);margin-top:8px;padding-top:14px;font-weight:800;font-size:1.15rem;color:var(--blue)}
 
-/* ============ FORMULAIRES CHECKOUT ============ */
 .form-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:14px}
 .form-row .form-group{flex:1 1 200px}
 .form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .form-group label{font-size:.8rem;font-weight:700;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em}
-.form-group input,.form-group select,.form-group textarea{
-  padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);
-  font-family:inherit;font-size:.92rem;outline:none;transition:.25s var(--ease);background:#fff;
-}
+.form-group input,.form-group select,.form-group textarea{padding:12px 16px;border-radius:12px;border:1.5px solid var(--line);font-family:inherit;font-size:.92rem;outline:none;transition:.25s var(--ease);background:#fff}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 4px var(--blue-glow)}
 
-/* ============ CHOICE CARDS ============ */
 .choice-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
-.choice-card{
-  border:1.5px solid var(--line);border-radius:16px;padding:16px;
-  cursor:pointer;transition:.25s var(--ease);display:flex;align-items:flex-start;gap:12px;
-  background:#fff;
-}
+.choice-card{border:1.5px solid var(--line);border-radius:16px;padding:16px;cursor:pointer;transition:.25s var(--ease);display:flex;align-items:flex-start;gap:12px;background:#fff}
 .choice-card:hover{border-color:var(--blue);background:var(--blue-light)}
 .choice-card.selected{border-color:var(--blue);background:var(--blue-light);box-shadow:0 0 0 3px var(--blue-glow)}
 .choice-card input{margin-top:4px;accent-color:var(--blue)}
 .choice-card strong{display:block;font-size:.92rem;margin-bottom:3px;font-weight:700}
 .choice-card small{color:var(--ink-mute);font-size:.78rem}
-.payment-methods{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px}
 
-/* ============ CONFIRM ============ */
 .confirm-box{text-align:center;padding:16px 0}
-.check-icon{font-size:4rem;color:var(--green);margin-bottom:16px;animation:pop .5s var(--ease)}
-@keyframes pop{0%{transform:scale(0)}80%{transform:scale(1.15)}100%{transform:scale(1)}}
-.order-number{
-  background:var(--blue-light);color:var(--blue);font-weight:800;
-  padding:12px 24px;border-radius:var(--radius-pill);display:inline-block;
-  margin:14px 0 20px;font-size:1.05rem;letter-spacing:.5px;
-}
+.check-icon{font-size:4rem;color:var(--green);margin-bottom:16px}
+.order-number{background:var(--blue-light);color:var(--blue);font-weight:800;padding:12px 24px;border-radius:var(--radius-pill);display:inline-block;margin:14px 0 20px;font-size:1.05rem;letter-spacing:.5px}
 .tracking-box{background:var(--bg-soft);border-radius:16px;padding:22px;text-align:left;margin-top:20px}
 .tracking-box h4{margin-bottom:12px;font-size:1rem;font-weight:700}
 .tracking-steps{display:flex;justify-content:space-between;margin-top:18px;position:relative}
 .tracking-steps::before{content:'';position:absolute;top:14px;left:20px;right:20px;height:2px;background:var(--line);z-index:0}
 .tracking-step{position:relative;z-index:1;text-align:center;flex:1;font-size:.72rem;color:var(--ink-mute);font-weight:500}
-.tracking-step .dot{
-  width:30px;height:30px;border-radius:50%;background:#fff;
-  border:2px solid var(--line);margin:0 auto 8px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:.75rem;color:var(--ink-mute);transition:.3s var(--ease);
-}
+.tracking-step .dot{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid var(--line);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--ink-mute);transition:.3s var(--ease)}
 .tracking-step.done .dot{background:var(--blue);border-color:var(--blue);color:#fff}
 .tracking-step.done{color:var(--blue);font-weight:700}
 
-/* ============ FICHE PRODUIT ============ */
 .pm-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start}
-.pm-image{
-  height:340px;border-radius:20px;background-size:cover;background-position:center;
-  background-color:var(--bg-soft);position:relative;overflow:hidden;
-  box-shadow:var(--shadow-sm);
-}
-.pm-thumbs{display:flex;gap:8px;margin-top:12px}
-.pm-thumb{width:60px;height:60px;border-radius:12px;background-size:cover;background-position:center;cursor:pointer;border:2px solid transparent;transition:.2s var(--ease);background-color:var(--bg-soft)}
-.pm-thumb.active{border-color:var(--blue)}
+.pm-image{height:340px;border-radius:20px;background-size:cover;background-position:center;background-color:var(--bg-soft);box-shadow:var(--shadow-sm)}
 .swatches{display:flex;gap:8px;margin-top:6px}
-.swatch{
-  width:38px;height:38px;border-radius:50%;cursor:pointer;
-  border:2px solid var(--line);transition:.25s var(--ease);
-  position:relative;
-}
+.swatch{width:38px;height:38px;border-radius:50%;cursor:pointer;border:2px solid var(--line);transition:.25s var(--ease);position:relative}
 .swatch:hover{transform:scale(1.1)}
 .swatch.active{border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-glow)}
 .swatch.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.85rem;font-weight:700;text-shadow:0 1px 2px rgba(0,0,0,.4)}
-.dim-schema{
-  display:flex;align-items:center;gap:16px;background:var(--bg-soft);
-  border-radius:14px;padding:16px;margin-top:14px;
-}
+.dim-schema{display:flex;align-items:center;gap:16px;background:var(--bg-soft);border-radius:14px;padding:16px;margin-top:14px}
 .dim-schema .dim-icon{font-size:2rem;color:var(--blue)}
 .dim-schema .dim-vals{font-size:.86rem;color:var(--ink-soft);line-height:1.7}
 .dim-schema .dim-vals strong{color:var(--ink);font-weight:700}
 
-/* ============ TOAST ============ */
-.toast{
-  position:fixed;bottom:28px;left:50%;transform:translate(-50%,30px);
-  background:var(--ink);color:#fff;padding:14px 24px;border-radius:var(--radius-pill);
-  box-shadow:var(--shadow-lg);font-weight:600;font-size:.88rem;
-  display:flex;align-items:center;gap:10px;z-index:2000;
-  opacity:0;transition:.35s var(--ease);pointer-events:none;max-width:90vw;
-}
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:14px 24px;border-radius:var(--radius-pill);box-shadow:var(--shadow-lg);font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:2000;opacity:0;transition:.35s var(--ease);pointer-events:none;max-width:90vw}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .toast.success{background:var(--green)}
 .toast.error{background:var(--red)}
 .toast i{font-size:1.05rem}
 
-/* ============ RESPONSIVE ============ */
-@media (max-width:1024px){
-  .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px}
-  .bento-large{grid-column:span 2;grid-row:span 1}
-  .bento-wide{grid-column:span 2}
-  .bento-tall{grid-row:span 1}
-}
 @media (max-width:900px){
   .hero h1{font-size:2.4rem}
   .hero-grid{gap:32px}
   .pm-grid{grid-template-columns:1fr}
-  .nav-links{gap:18px;font-size:.86rem}
 }
 @media (max-width:640px){
   .container{padding:0 18px}
   .hero h1{font-size:1.9rem}
   .section-title{font-size:1.6rem}
   .navbar{flex-direction:column;gap:14px}
-  .nav-links{justify-content:center;gap:14px;font-size:.82rem}
   .product-grid{grid-template-columns:1fr;gap:20px}
-  .cart-item{grid-template-columns:64px 1fr;gap:12px}
-  .cart-item-img{width:64px;height:64px}
-  .cart-item-price{grid-column:2;text-align:left}
-  .choice-cards,.payment-methods{grid-template-columns:1fr}
+  .choice-cards{grid-template-columns:1fr}
   .slideover{max-width:100%}
-  .bento{grid-template-columns:1fr;grid-auto-rows:140px}
-  .bento-large,.bento-wide,.bento-tall{grid-column:span 1;grid-row:span 1}
-  .hero-image{min-height:280px}
 }
 </style>
 </head>
 <body>
-
 
 <header id="mainHeader">
   <div class="container navbar">
@@ -626,11 +281,6 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="header-actions">
-      <button class="icon-btn has-kbd" title="Rechercher (Ctrl+K)" onclick="openCmdK()">
-        <i class="fas fa-search"></i>
-        <span class="kbd" id="kbdHint">⌘K</span>
-      </button>
-      <button class="icon-btn" title="Compte"><i class="fas fa-user"></i></button>
       <button class="icon-btn" title="Panier" onclick="openCart()">
         <i class="fas fa-shopping-bag"></i>
         <span class="cart-count" id="cartCount">0</span>
@@ -640,72 +290,26 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
 </header>
 
 <main>
-  <!-- HERO -->
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content">
         <span class="hero-badge"><i class="fas fa-star"></i> Confort & performance</span>
         <h1>Mobilier de bureau pensé pour <em>votre posture</em></h1>
-        <p>Des bureaux, chaises ergonomiques et rangements durables, alliant design épuré et matériaux nobles. Investissez dans votre bien-être au travail.</p>
+        <p>Des bureaux, chaises ergonomiques et rangements durables, alliant design épuré et matériaux nobles.</p>
         <div class="hero-cta">
           <a href="#catalogue" class="btn">Découvrir la collection <i class="fas fa-arrow-right"></i></a>
-          <a href="#bento" class="btn btn-outline">Nos univers</a>
         </div>
       </div>
       <div class="hero-image"></div>
     </div>
   </section>
 
-  <!-- BENTO GRID -->
-  <section id="bento" style="padding-top:20px">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Nos univers</span>
-        <h2 class="section-title">Un espace de travail qui vous ressemble</h2>
-        <p class="section-sub">Quatre univers pour équiper chaque coin de votre bureau, du poste opérationnel à l'espace direction.</p>
-      </div>
-      <div class="bento">
-        <div class="bento-card bento-large" style="background-image:url('images/fauteuil-president-cuir-noir.jpg')" onclick="quickFilter('chaise')">
-          <div class="bento-content">
-            <h3>Ergonomie & confort</h3>
-            <p>Chaises et sièges pensés pour votre dos</p>
-            <span class="arrow">Découvrir <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-        <div class="bento-card" style="background-image:url('images/bureau-agent-1m20.jpg')" onclick="quickFilter('bureau')">
-          <div class="bento-content">
-            <h3>Télétravail</h3>
-            <p>Bureaux compacts et fonctionnels</p>
-            <span class="arrow">Découvrir <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-        <div class="bento-card" style="background-image:url('images/bureau-Agent-noyer.jpg')" onclick="quickFilter('bureau')">
-          <div class="bento-content">
-            <h3>Espace Direction</h3>
-            <p>Bureaux d'exception en bois massif</p>
-            <span class="arrow">Découvrir <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-        <div class="bento-card bento-wide" style="background-image:url('images/armoire-vitree-3-portes.jpg')" onclick="quickFilter('rangement')">
-          <div class="bento-content">
-            <h3>Rangement & acoustique</h3>
-            <p>Solutions modulables pour un espace ordonné</p>
-            <span class="arrow">Découvrir <i class="fas fa-arrow-right"></i></span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CATALOGUE -->
   <section class="catalogue" id="catalogue">
     <div class="container">
       <div class="section-head">
         <span class="eyebrow">Catalogue</span>
         <h2 class="section-title">Nos pièces signature</h2>
-        <p class="section-sub">Filtrez par catégorie, dimensions, matériau, prix et disponibilité.</p>
       </div>
-
       <div class="filters-panel">
         <div class="filters-row">
           <div class="filter-item search-bar">
@@ -723,50 +327,6 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
               <option value="accessoire">Accessoires</option>
             </select>
           </div>
-          <div class="filter-item">
-            <label>Matériau</label>
-            <select id="fMaterial">
-              <option value="all">Tous</option>
-              <option value="bois">Bois</option>
-              <option value="metal">Métal</option>
-              <option value="tissu">Tissu</option>
-            </select>
-          </div>
-          <div class="filter-item">
-            <label>Style</label>
-            <select id="fStyle">
-              <option value="all">Tous</option>
-              <option value="moderne">Moderne</option>
-              <option value="scandinave">Scandinave</option>
-              <option value="ergonomique">Ergonomique</option>
-              <option value="industriel">Industriel</option>
-              <option value="confort">Confort</option>
-            </select>
-          </div>
-          <div class="filter-item">
-            <label>Prix max</label>
-            <select id="fPrice">
-              <option value="all">Tous</option>
-              <option value="200">≤ 200$</option>
-              <option value="500">≤ 500$</option>
-              <option value="1000">≤ 1000$</option>
-              <option value="2000">≤ 2000$</option>
-            </select>
-          </div>
-        </div>
-        <div class="filters-row" style="margin-top:14px">
-          <div class="filter-item">
-            <label>Hauteur min (cm)</label>
-            <input type="number" id="fHeight" placeholder="ex: 70" min="0">
-          </div>
-          <div class="filter-item">
-            <label>Largeur min (cm)</label>
-            <input type="number" id="fWidth" placeholder="ex: 120" min="0">
-          </div>
-          <div class="filter-item">
-            <label>Profondeur min (cm)</label>
-            <input type="number" id="fDepth" placeholder="ex: 60" min="0">
-          </div>
           <label class="filter-check"><input type="checkbox" id="fInStock"> En stock uniquement</label>
           <button class="btn btn-outline btn-small" onclick="resetFilters()" style="margin-top:22px">Réinitialiser</button>
         </div>
@@ -774,12 +334,10 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
           <div class="results-count"><strong id="resultsCount">0</strong> produit(s) trouvé(s)</div>
         </div>
       </div>
-
       <div class="product-grid" id="productGrid"></div>
     </div>
   </section>
 
-  <!-- TRUST -->
   <section class="trust-bar">
     <div class="container trust-grid">
       <div class="trust-item"><i class="fas fa-truck-fast"></i> Livraison 48h</div>
@@ -789,79 +347,14 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
     </div>
   </section>
 
-  <!-- BLOG -->
-  <section id="blog">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Conseils ergonomie</span>
-        <h2 class="section-title">Le journal du bureau sain</h2>
-        <p class="section-sub">Nos experts partagent leurs astuces pour un poste de travail productif et sans douleur.</p>
-      </div>
-      <div class="blog-grid">
-        <article class="blog-card">
-          <div class="blog-img" style="background-image:url('images/chaise-ergonomique-dossier-maille.jpg')"></div>
-          <div class="blog-content">
-            <h4>Régler sa chaise ergonomique : le guide ultime</h4>
-            <p>Hauteur, inclinaison, soutien lombaire... comment ajuster votre siège pour éviter les douleurs.</p>
-            <a href="#">Lire l'article <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-card">
-          <div class="blog-img" style="background-image:url('images/bureau-agent-b202.jpg')"></div>
-          <div class="blog-content">
-            <h4>Quel bureau choisir pour le télétravail ?</h4>
-            <p>Dimensions, matériaux, assis-debout : nos recommandations pour un espace qui booste la concentration.</p>
-            <a href="#">Lire l'article <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-        <article class="blog-card">
-          <div class="blog-img" style="background-image:url('images/armoire-vitree-3-portes.jpg')"></div>
-          <div class="blog-content">
-            <h4>Matériaux durables : bois massif vs mélaminé</h4>
-            <p>Comparatif des options pour un mobilier qui traverse les années tout en respectant l'environnement.</p>
-            <a href="#">Lire l'article <i class="fas fa-arrow-right"></i></a>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- À PROPOS -->
   <section id="about">
     <div class="container about-flex">
       <div class="about-text">
         <span class="eyebrow">Notre histoire</span>
         <h2>Qualité, confort et durabilité depuis 2014</h2>
-        <p>Depuis plus de 10 ans, MobilierBureauPro sélectionne des pièces alliant design épuré et ergonomie. Chaque produit est testé pour sa robustesse et son impact environnemental.</p>
-        <p>Nous croyons qu'un espace de travail bien pensé améliore la santé et la productivité. C'est pourquoi nous travaillons avec des fabricants européens respectant des normes strictes.</p>
-        <a href="#contact" class="btn btn-outline">Nous contacter</a>
+        <p>Depuis plus de 10 ans, MobilierBureauPro sélectionne des pièces alliant design épuré et ergonomie.</p>
       </div>
       <div class="about-img"></div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="section-head">
-        <span class="eyebrow">Contact</span>
-        <h2 class="section-title">Une question ? Parlons-en.</h2>
-        <p class="section-sub">Notre équipe vous répond sous 24h ouvrées.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-info">
-          <p><i class="fas fa-map-pin"></i> Koumassi en allant à sowéto, Abidjan</p>
-          <p><i class="fas fa-phone-alt"></i> +225 07 07 33 33 94</p>
-          <p><i class="fas fa-envelope"></i> elmonarquiatoshiba@gmail.com</p>
-          <p><i class="fas fa-clock"></i> Du lundi au vendredi : 9h-18h, Samedi : 10h-17h</p>
-        </div>
-        <form class="contact-form" onsubmit="event.preventDefault();showToast('Message envoyé ! Réponse sous 24h.','success');this.reset()">
-          <input type="text" placeholder="Votre nom" required>
-          <input type="email" placeholder="Votre email" required>
-          <textarea rows="4" placeholder="Votre message" required></textarea>
-          <button type="submit" class="btn" style="align-self:flex-start">Envoyer</button>
-        </form>
-      </div>
     </div>
   </section>
 </main>
@@ -869,40 +362,22 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
 <footer>
   <div class="container">
     <div class="footer-grid">
-      <div class="footer-col">
-        <h4>MobilierBureauPro</h4>
-        <p style="color:#98A5B5">Mobilier de bureau haut de gamme pour les professionnels exigeants.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Boutique</h4>
+      <div class="footer-col"><h4>MobilierBureauPro</h4><p>Mobilier de bureau haut de gamme.</p></div>
+      <div class="footer-col"><h4>Boutique</h4>
         <a href="#catalogue" onclick="quickFilter('bureau')">Bureaux</a>
         <a href="#catalogue" onclick="quickFilter('chaise')">Chaises</a>
         <a href="#catalogue" onclick="quickFilter('rangement')">Rangements</a>
-        <a href="#catalogue" onclick="quickFilter('accessoire')">Accessoires</a>
       </div>
-      <div class="footer-col">
-        <h4>Informations</h4>
-        <a href="#">Livraison & suivi</a>
-        <a href="#">Retours</a>
-        <a href="#">CGV</a>
-        <a href="#">Confidentialité</a>
-      </div>
-      <div class="footer-col">
-        <h4>Contact</h4>
-        <a href="mailto:contact@mobilierbureaupro.fr">contact@mobilierbureaupro.fr</a>
-        <a href="tel:+33123456789">01 23 45 67 89</a>
-        <a href="#" onclick="openTracking();return false">Suivi de commande</a>
+      <div class="footer-col"><h4>Admin</h4>
+        <a href="admin.html"><i class="fas fa-lock"></i> Espace administration</a>
       </div>
     </div>
-    <div class="footer-bottom">
-      © 2025 MobilierBureauPro — Tous droits réservés. Paiement à la livraison <i class="fas fa-hand-holding-usd" style="margin-left:6px"></i>
-    </div>
+    <div class="footer-bottom">© 2025 MobilierBureauPro — Tous droits réservés.</div>
   </div>
 </footer>
 
-<!-- SLIDE-OVER PANIER -->
 <div class="slideover-overlay" id="cartOverlay" onclick="closeCart()"></div>
-<aside class="slideover" id="cartSlideover" aria-hidden="true">
+<aside class="slideover" id="cartSlideover">
   <div class="slideover-head">
     <h3 id="cartModalTitle"><i class="fas fa-shopping-bag"></i> Votre panier</h3>
     <button class="slideover-close" onclick="closeCart()"><i class="fas fa-times"></i></button>
@@ -911,7 +386,6 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
   <div class="slideover-foot" id="cartModalFoot"></div>
 </aside>
 
-<!-- MODALE PRODUIT -->
 <div class="modal-overlay" id="productModal">
   <div class="modal" style="max-width:840px">
     <div class="modal-head">
@@ -923,101 +397,51 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
   </div>
 </div>
 
-<!-- MODALE SUIVI -->
-<div class="modal-overlay" id="trackingModal">
-  <div class="modal" style="max-width:540px">
-    <div class="modal-head">
-      <h3><i class="fas fa-truck"></i> Suivi de commande</h3>
-      <button class="modal-close" onclick="closeModal('trackingModal')"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="modal-body" id="trackingBody"></div>
-    <div class="modal-foot">
-      <button class="btn btn-ghost" onclick="closeModal('trackingModal')">Fermer</button>
-      <button class="btn" onclick="simulateTracking()">Rechercher</button>
-    </div>
-  </div>
-</div>
-
-<!-- COMMAND PALETTE (⌘K) -->
-<div class="cmdk-overlay" id="cmdkOverlay" onclick="if(event.target===this)closeCmdK()">
-  <div class="cmdk">
-    <div class="cmdk-input">
-      <i class="fas fa-search"></i>
-      <input type="text" id="cmdkInput" placeholder="Rechercher un produit, une catégorie, une action..." autocomplete="off">
-      <span class="kbd">ESC</span>
-    </div>
-    <div class="cmdk-results" id="cmdkResults"></div>
-  </div>
-</div>
-
-<!-- TOAST -->
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">OK</span></div>
 
 <script>
 /* ============================================================
-   1. BASE DE DONNÉES PRODUITS
+   1. BASE DE DONNÉES PRODUITS (identique à admin.html)
    ============================================================ */
 const PRODUCTS = [
-  // BUREAUX
-  { sku:'BUR-001', name:'Bureau Agent 1m20', category:'bureau', price:6, oldPrice:20, material:'bois', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:75,w:120,d:60}, weight:35, leadTime:'48h',
-    img:'images/bureau-agent-1m20.jpg',
-    
-    options:[{name:'Chêne clair',hex:'#D9C6B0'},{name:'Blanc',hex:'#F2F2F2'}] },
-  { sku:'BUR-002', name:'Bureau Directeur Noyer', category:'bureau', price:50, oldPrice:100, material:'bois', style:'moderne', rating:4.8, promo:true, stock:5, dims:{h:75,w:180,d:80}, weight:60, leadTime:'5 jours',
-    img:'images/bureau-directeur-noyer.jpg',
-    
-    options:[{name:'Noyer',hex:'#7B5233'},{name:'Chêne foncé',hex:'#5C4033'}] },
-  { sku:'BUR-003', name:'Bureau Directeur B202', category:'bureau', price:49, oldPrice:150, material:'bois', style:'moderne', rating:4.3, promo:false, stock:20, dims:{h:75,w:100,d:50}, weight:25, leadTime:'48h',
-    img:'images/bureau-agent-b202.jpg',
-    
-    options:[{name:'Noir',hex:'#222'},{name:'Chêne clair',hex:'#D9C6B0'}] },
-  
-  // CHAISES
-  { sku:'CHA-001', name:'Fauteuil Président Cuir Noir', category:'chaise', price:49, oldPrice:90, material:'tissu', style:'confort', rating:4.9, promo:true, stock:10, dims:{h:110,w:65,d:65}, weight:22, leadTime:'48h',
-    img:'images/fauteuil-president-cuir-noir.jpg',
-    
-    options:[{name:'Noir',hex:'#222'},{name:'Marron',hex:'#8B4A2B'}] },
-  { sku:'CHA-002', name:'Chaise Ergonomique Dossier Maillé', category:'chaise', price:19, oldPrice:60, material:'tissu', style:'ergonomique', rating:4.7, promo:false, stock:30, dims:{h:105,w:60,d:60}, weight:15, leadTime:'48h',
-    img:'images/chaise-ergonomique-dossier-maille.jpg',
-    
-    options:[{name:'Noir',hex:'#222'},{name:'Gris',hex:'#A0A5B0'}] },
-  { sku:'CHA-003', name:'Chaise Visiteur Maille Noire', category:'chaise', price:49, oldPrice:80, material:'metal', style:'moderne', rating:4.4, promo:false, stock:25, dims:{h:95,w:58,d:58}, weight:12, leadTime:'48h',
-    img:'images/chaise-visiteur-maille.jpg',
-    
-    options:[{name:'Noir',hex:'#222'},{name:'Bleu',hex:'#1B3A5C'}] },
-
-  // RANGEMENTS
-  { sku:'RAN-001', name:'Armoire Vitrée 3 Portes', category:'rangement', price:99, oldPrice:120, material:'bois', style:'moderne', rating:4.8, promo:false, stock:8, dims:{h:200,w:120,d:45}, weight:80, leadTime:'5 jours',
-    img:'images/armoire-vitree-3-portes.jpg',
-    
-    options:[{name:'Chêne doré',hex:'#C9A96E'},{name:'Noyer',hex:'#7B5233'}] },
-  { sku:'RAN-002', name:'Armoire Métalique Basse Blanche', category:'rangement', price:29, oldPrice:65, material:'metal', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:90,w:80,d:40}, weight:40, leadTime:'3 jours',
-    img:'images/armoire-basse-blanche.jpg',
-    
-    options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
-  { sku:'RAN-003', name:'Placart 3 Tiroirs Noyer', category:'rangement', price:89, oldPrice:110, material:'bois', style:'moderne', rating:4.6, promo:false, stock:22, dims:{h:60,w:42,d:55}, weight:20, leadTime:'3 jours',
-    img:'images/caisson-3-tiroirs.jpg',
-    
-    options:[{name:'Noyer',hex:'#7B5233'},{name:'Blanc',hex:'#F2F2F2'}] },
-  { sku:'RAN-004', name:'Armoire Vitrée 2 Portes', category:'rangement', price:49, oldPrice:59, material:'metal', style:'industriel', rating:4.3, promo:false, stock:12, dims:{h:180,w:90,d:45}, weight:55, leadTime:'3 jours',
-    img:'images/armoire-metallique-2-portes.jpg',
-    
-    options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
-  
-  // ACCESSOIRES
-  { sku:'ACC-001', name:'Bureau Agent d\'angle', category:'accessoire', price:89, oldPrice:99, material:'bois', style:'moderne', rating:4.6, promo:false, stock:9, dims:{h:75,w:160,d:120}, weight:48, leadTime:'5 jours',
-    img:'images/bureau-angle-compact.jpg',
-    
-    options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Chêne clair',hex:'#D9C6B0'}] }
+  { sku:'BUR-001', name:'Bureau Agent 1m20', category:'bureau', price:6, oldPrice:20, material:'bois', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:75,w:120,d:60}, weight:35, leadTime:'48h', img:'images/bureau-agent-1m20.jpg', options:[{name:'Chêne clair',hex:'#D9C6B0'},{name:'Blanc',hex:'#F2F2F2'}] },
+  { sku:'BUR-002', name:'Bureau Directeur Noyer', category:'bureau', price:50, oldPrice:100, material:'bois', style:'moderne', rating:4.8, promo:true, stock:5, dims:{h:75,w:180,d:80}, weight:60, leadTime:'5 jours', img:'images/bureau-directeur-noyer.jpg', options:[{name:'Noyer',hex:'#7B5233'},{name:'Chêne foncé',hex:'#5C4033'}] },
+  { sku:'BUR-003', name:'Bureau Directeur B202', category:'bureau', price:49, oldPrice:150, material:'bois', style:'moderne', rating:4.3, promo:false, stock:20, dims:{h:75,w:100,d:50}, weight:25, leadTime:'48h', img:'images/bureau-agent-b202.jpg', options:[{name:'Noir',hex:'#222'},{name:'Chêne clair',hex:'#D9C6B0'}] },
+  { sku:'CHA-001', name:'Fauteuil Président Cuir Noir', category:'chaise', price:49, oldPrice:90, material:'tissu', style:'confort', rating:4.9, promo:true, stock:10, dims:{h:110,w:65,d:65}, weight:22, leadTime:'48h', img:'images/fauteuil-president-cuir-noir.jpg', options:[{name:'Noir',hex:'#222'},{name:'Marron',hex:'#8B4A2B'}] },
+  { sku:'CHA-002', name:'Chaise Ergonomique Dossier Maillé', category:'chaise', price:19, oldPrice:60, material:'tissu', style:'ergonomique', rating:4.7, promo:false, stock:30, dims:{h:105,w:60,d:60}, weight:15, leadTime:'48h', img:'images/chaise-ergonomique-dossier-maille.jpg', options:[{name:'Noir',hex:'#222'},{name:'Gris',hex:'#A0A5B0'}] },
+  { sku:'CHA-003', name:'Chaise Visiteur Maille Noire', category:'chaise', price:49, oldPrice:80, material:'metal', style:'moderne', rating:4.4, promo:false, stock:25, dims:{h:95,w:58,d:58}, weight:12, leadTime:'48h', img:'images/chaise-visiteur-maille.jpg', options:[{name:'Noir',hex:'#222'},{name:'Bleu',hex:'#1B3A5C'}] },
+  { sku:'RAN-001', name:'Armoire Vitrée 3 Portes', category:'rangement', price:99, oldPrice:120, material:'bois', style:'moderne', rating:4.8, promo:false, stock:8, dims:{h:200,w:120,d:45}, weight:80, leadTime:'5 jours', img:'images/armoire-vitree-3-portes.jpg', options:[{name:'Chêne doré',hex:'#C9A96E'},{name:'Noyer',hex:'#7B5233'}] },
+  { sku:'RAN-002', name:'Armoire Métalique Basse Blanche', category:'rangement', price:29, oldPrice:65, material:'metal', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:90,w:80,d:40}, weight:40, leadTime:'3 jours', img:'images/armoire-basse-blanche.jpg', options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
+  { sku:'RAN-003', name:'Placart 3 Tiroirs Noyer', category:'rangement', price:89, oldPrice:110, material:'bois', style:'moderne', rating:4.6, promo:false, stock:22, dims:{h:60,w:42,d:55}, weight:20, leadTime:'3 jours', img:'images/caisson-3-tiroirs.jpg', options:[{name:'Noyer',hex:'#7B5233'},{name:'Blanc',hex:'#F2F2F2'}] },
+  { sku:'RAN-004', name:'Armoire Vitrée 2 Portes', category:'rangement', price:49, oldPrice:59, material:'metal', style:'industriel', rating:4.3, promo:false, stock:12, dims:{h:180,w:90,d:45}, weight:55, leadTime:'3 jours', img:'images/armoire-metallique-2-portes.jpg', options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
+  { sku:'ACC-001', name:'Bureau Agent d\'angle', category:'accessoire', price:89, oldPrice:99, material:'bois', style:'moderne', rating:4.6, promo:false, stock:9, dims:{h:75,w:160,d:120}, weight:48, leadTime:'5 jours', img:'images/bureau-angle-compact.jpg', options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Chêne clair',hex:'#D9C6B0'}] }
 ];
 
 /* ============================================================
-   2. ÉTAT GLOBAL
+   2. ÉTAT GLOBAL + APPLICATION DU STOCK ADMIN
    ============================================================ */
 let CART = JSON.parse(localStorage.getItem('mbp_cart') || '[]');
 let ORDERS = JSON.parse(localStorage.getItem('mbp_orders') || '[]');
 let FAVORITES = JSON.parse(localStorage.getItem('mbp_fav') || '[]');
 let CHECKOUT = { step:1, customer:{}, shipping:'std', payment:'cod' };
+
+/* ===== APPLIQUER LE STOCK DEPUIS L'ADMIN ===== */
+function applyAdminStock(){
+  const savedStock = JSON.parse(localStorage.getItem('mbp_stock') || 'null');
+  if (!savedStock) return;
+  PRODUCTS.forEach(p => {
+    const s = savedStock[p.sku];
+    if (s){
+      p.stock = s.stock;
+      p.disabled = !!s.disabled;
+    }
+  });
+}
+applyAdminStock();
+
+window.addEventListener('storage', e => {
+  if (e.key === 'mbp_stock'){ applyAdminStock(); renderProducts(); }
+});
 
 function saveCart(){ localStorage.setItem('mbp_cart', JSON.stringify(CART)); updateCartCount(); }
 function saveOrders(){ localStorage.setItem('mbp_orders', JSON.stringify(ORDERS)); }
@@ -1025,55 +449,26 @@ function saveFav(){ localStorage.setItem('mbp_fav', JSON.stringify(FAVORITES)); 
 
 function updateCartCount(){
   const n = CART.reduce((s,i)=>s+i.qty,0);
-  const el = document.getElementById('cartCount');
-  el.textContent = n;
-  el.style.animation = 'none';
-  void el.offsetWidth;
-  el.style.animation = 'pop-in .4s cubic-bezier(.22,.9,.32,1)';
+  document.getElementById('cartCount').textContent = n;
 }
 
 /* ============================================================
-   3. FILTRES + RENDU
+   3. FILTRES + RENDU PRODUITS
    ============================================================ */
 function getFilteredProducts(){
   const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
   const cat = document.getElementById('fCategory').value;
-  const mat = document.getElementById('fMaterial').value;
-  const sty = document.getElementById('fStyle').value;
-  const maxP = document.getElementById('fPrice').value;
-  const hMin = parseFloat(document.getElementById('fHeight').value) || 0;
-  const wMin = parseFloat(document.getElementById('fWidth').value) || 0;
-  const dMin = parseFloat(document.getElementById('fDepth').value) || 0;
   const inStock = document.getElementById('fInStock').checked;
 
   return PRODUCTS.filter(p => {
     if (cat !== 'all' && p.category !== cat) return false;
-    if (mat !== 'all' && p.material !== mat) return false;
-    if (sty !== 'all' && p.style !== sty) return false;
-    if (maxP !== 'all' && p.price > parseFloat(maxP)) return false;
-    if (p.dims.h < hMin) return false;
-    if (p.dims.w < wMin) return false;
-    if (p.dims.d < dMin) return false;
-    if (inStock && p.stock <= 0) return false;
+    if (inStock && (p.stock <= 0 || p.disabled)) return false;
     if (q){
-      const hay = (p.name + ' ' + p.category + ' ' + p.sku + ' ' + p.material + ' ' + p.style).toLowerCase();
-      if (!hay.includes(q) && !fuzzyMatch(q, hay)) return false;
+      const hay = (p.name + ' ' + p.category + ' ' + p.sku).toLowerCase();
+      if (!hay.includes(q)) return false;
     }
     return true;
   });
-}
-function fuzzyMatch(needle, hay){
-  if (needle.length < 3) return false;
-  for (const word of hay.split(/\s+/)){
-    if (Math.abs(word.length - needle.length) > 2) continue;
-    let diff = 0;
-    for (let i=0;i<Math.min(word.length,needle.length);i++){
-      if (word[i] !== needle[i]) diff++;
-      if (diff > 1) break;
-    }
-    if (diff <= 1 && word.length >= needle.length - 1) return true;
-  }
-  return false;
 }
 
 function renderProducts(){
@@ -1084,10 +479,13 @@ function renderProducts(){
     grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:50px;color:#8892A0"><i class="fas fa-search" style="font-size:2.5rem;margin-bottom:14px;display:block;color:#E5E8ED"></i>Aucun produit ne correspond à vos critères.</div>';
     return;
   }
-  grid.innerHTML = list.map((p, idx) => {
+  grid.innerHTML = list.map(p => {
     let stockBadge = '';
     let stockInfo = '';
-    if (p.stock <= 0){
+    if (p.disabled){
+      stockBadge = '<span class="badge badge-stock-out">Indisponible</span>';
+      stockInfo = '<span class="stock-info out"><span class="stock-dot"></span>Indisponible</span>';
+    } else if (p.stock <= 0){
       stockBadge = '<span class="badge badge-stock-out">Rupture</span>';
       stockInfo = '<span class="stock-info out"><span class="stock-dot"></span>Rupture</span>';
     } else if (p.stock <= 5){
@@ -1097,13 +495,11 @@ function renderProducts(){
       if (p.promo) stockBadge = '<span class="badge badge-promo">Promo</span>';
       stockInfo = '<span class="stock-info in"><span class="stock-dot"></span>En stock · 24h</span>';
     }
-    const isFav = FAVORITES.includes(p.sku);
-    const hasSecondImg = !!p.img2;
+    const unavailable = p.stock <= 0 || p.disabled;
     return `
-      <div class="product-card" style="animation-delay:${idx*40}ms">
-        <div class="product-img ${hasSecondImg ? 'has-hover-img' : ''}">
-          <div class="product-img-inner img-a" style="background-image:url('${p.img}')" onerror="this.classList.add('img-missing');this.style.backgroundImage='none'"></div>
-          ${hasSecondImg ? `<div class="product-img-inner img-b" style="background-image:url('${p.img2}')" onerror="this.classList.add('img-missing');this.style.backgroundImage='none'"></div>` : ''}
+      <div class="product-card">
+        <div class="product-img">
+          <div class="product-img-inner" style="background-image:url('${p.img}')"></div>
           ${stockBadge}
         </div>
         <div class="product-info">
@@ -1111,20 +507,17 @@ function renderProducts(){
           <h3 class="product-title">${p.name}</h3>
           <div class="product-dims"><i class="fas fa-ruler-combined"></i> ${p.dims.h}×${p.dims.w}×${p.dims.d} cm</div>
           <div class="product-price">
-            ${p.price.toFixed(0)}
+            ${p.price.toFixed(0)}$
             ${p.oldPrice ? '<s>'+p.oldPrice.toFixed(0)+'$</s>' : ''}
           </div>
           <div class="rating">${'★'.repeat(Math.floor(p.rating))}${'☆'.repeat(5-Math.floor(p.rating))} <span>${p.rating}</span></div>
           <div class="product-actions">
             ${stockInfo}
-            <button class="fav-btn ${isFav?'active':''}" onclick="toggleFav('${p.sku}',this)" title="Favori">
-              <i class="fa${isFav?'s':'r'} fa-heart"></i>
-            </button>
           </div>
           <div class="product-cta">
             <button class="btn btn-outline btn-small" onclick="openProduct('${p.sku}')">Voir</button>
-            <button class="btn btn-small" ${p.stock<=0?'disabled':''} onclick="addToCart('${p.sku}')">
-              ${p.stock<=0 ? 'Indisponible' : 'Ajouter'}
+            <button class="btn btn-small" ${unavailable ? 'disabled' : ''} onclick="addToCart('${p.sku}')">
+              ${unavailable ? 'Indisponible' : 'Ajouter'}
             </button>
           </div>
         </div>
@@ -1140,8 +533,8 @@ function quickFilter(cat){
 }
 function scrollToCatalogue(){ document.getElementById('catalogue').scrollIntoView({behavior:'smooth'}); }
 function resetFilters(){
-  ['searchInput','fHeight','fWidth','fDepth'].forEach(id => document.getElementById(id).value = '');
-  ['fCategory','fMaterial','fStyle','fPrice'].forEach(id => document.getElementById(id).value = 'all');
+  document.getElementById('searchInput').value = '';
+  document.getElementById('fCategory').value = 'all';
   document.getElementById('fInStock').checked = false;
   renderProducts();
 }
@@ -1151,7 +544,7 @@ function resetFilters(){
    ============================================================ */
 function addToCart(sku, qty=1, options=null){
   const p = PRODUCTS.find(x => x.sku === sku);
-  if (!p || p.stock <= 0){ showToast('Produit indisponible','error'); return; }
+  if (!p || p.stock <= 0 || p.disabled){ showToast('Produit indisponible','error'); return; }
   const key = sku + (options ? '|'+options : '');
   const existing = CART.find(i => i.key === key);
   if (existing){
@@ -1183,11 +576,9 @@ function updateQty(key, delta){
 function cartTotal(){ return CART.reduce((s,i) => s + i.price * i.qty, 0); }
 function shippingCost(){
   const t = cartTotal();
-  const totalWeight = CART.reduce((s,i) => s + (i.weight||10) * i.qty, 0);
   if (t === 0) return 0;
   if (t >= 299) return 0;
   let base = 19.90;
-  if (totalWeight > 50) base += 30;
   if (CHECKOUT.shipping === 'premium') base += 49;
   if (CHECKOUT.shipping === 'assembly') base += 99;
   return base;
@@ -1331,15 +722,6 @@ function renderCart(){
           </div>
         </label>
       </div>
-      <div style="background:var(--terracotta-light);border-radius:14px;padding:16px;margin-top:16px;display:flex;gap:12px;align-items:flex-start">
-        <i class="fas fa-info-circle" style="color:var(--terracotta);font-size:1.2rem;margin-top:2px"></i>
-        <div style="font-size:.86rem;color:var(--ink-soft)">
-          <strong style="color:var(--ink)">Comment ça marche ?</strong><br>
-          Le livreur vous contactera avant la livraison pour convenir d'un créneau. 
-          Vous réglerez le montant total en espèces ou par carte bancaire directement au livreur.
-          Un reçu vous sera remis sur place.
-        </div>
-      </div>
       <div class="cart-totals">
         <div class="cart-totals-row"><span>Sous-total</span><span>${cartTotal().toFixed(2)}$</span></div>
         <div class="cart-totals-row"><span>Livraison</span><span>${shippingCost()===0?'Offerte':shippingCost().toFixed(2)+'$'}</span></div>
@@ -1347,9 +729,7 @@ function renderCart(){
       </div>`;
     foot.innerHTML = `
       <button class="btn btn-ghost" onclick="goToStep(3)">Retour</button>
-      <button class="btn btn-success" onclick="confirmOrder()">
-        <i class="fas fa-check"></i> Confirmer la commande
-      </button>`;
+      <button class="btn btn-success" onclick="confirmOrder()"><i class="fas fa-check"></i> Confirmer la commande</button>`;
   }
   else if (step === 5){
     const order = ORDERS[ORDERS.length-1];
@@ -1358,22 +738,8 @@ function renderCart(){
       <div class="confirm-box">
         <i class="fas fa-check-circle check-icon"></i>
         <h3>Merci pour votre commande !</h3>
-        <p style="color:var(--ink-mute);margin-top:8px">Un email de confirmation avec votre facture PDF vient de vous être envoyé.</p>
+        <p style="color:var(--ink-mute);margin-top:8px">Conservez votre numéro de commande.</p>
         <div class="order-number">N° ${order.number}</div>
-        
-        <div style="background:var(--terracotta-light);border-radius:14px;padding:16px;margin:16px 0;text-align:left">
-          <div style="display:flex;gap:12px;align-items:flex-start">
-            <i class="fas fa-hand-holding-usd" style="color:var(--terracotta);font-size:1.4rem;margin-top:2px"></i>
-            <div>
-              <strong style="color:var(--ink)">Paiement à la livraison</strong>
-              <p style="font-size:.86rem;color:var(--ink-soft);margin-top:4px">
-                Le montant de <strong>${order.total.toFixed(2)}$</strong> sera à régler directement au livreur 
-                (espèces ou carte bancaire). Préparez le montant exact si possible.
-              </p>
-            </div>
-          </div>
-        </div>
-
         <div class="tracking-box">
           <h4><i class="fas fa-truck"></i> Suivi de livraison</h4>
           <p style="font-size:.86rem;color:var(--ink-mute)">Transporteur : <strong>${order.carrier}</strong> · Estimation : <strong>${order.eta}</strong></p>
@@ -1385,9 +751,7 @@ function renderCart(){
           </div>
         </div>
       </div>`;
-    foot.innerHTML = `
-      <button class="btn btn-outline" onclick="closeCart()">Continuer</button>
-      <button class="btn" onclick="window.print()"><i class="fas fa-file-pdf"></i> Facture PDF</button>`;
+    foot.innerHTML = `<button class="btn btn-outline" onclick="closeCart()">Continuer</button>`;
   }
 }
 
@@ -1412,17 +776,26 @@ function saveCustomerAndNext(){
 function goToStep(n){ CHECKOUT.step = n; renderCart(); }
 
 /* ============================================================
-   6. CONFIRMATION
+   6. CONFIRMATION — ENREGISTRE DANS mbp_orders POUR L'ADMIN
    ============================================================ */
 function confirmOrder(){
   for (const item of CART){
     const p = PRODUCTS.find(x => x.sku === item.sku);
     if (!p || p.stock < item.qty){ showToast('Stock insuffisant pour ' + item.name,'error'); return; }
   }
+  // Décrémenter le stock local
   CART.forEach(item => {
     const p = PRODUCTS.find(x => x.sku === item.sku);
     if (p) p.stock -= item.qty;
   });
+  // Synchroniser le stock modifié avec mbp_stock (pour que l'admin le voie)
+  const savedStock = JSON.parse(localStorage.getItem('mbp_stock') || 'null') || {};
+  PRODUCTS.forEach(p => {
+    savedStock[p.sku] = { stock: p.stock, disabled: !!p.disabled };
+  });
+  localStorage.setItem('mbp_stock', JSON.stringify(savedStock));
+  window.dispatchEvent(new StorageEvent('storage', { key:'mbp_stock', newValue: JSON.stringify(savedStock) }));
+
   const total = cartTotal() + shippingCost();
   const order = {
     number: 'MBP-' + Date.now().toString().slice(-8),
@@ -1433,6 +806,7 @@ function confirmOrder(){
     shipping: CHECKOUT.shipping,
     payment: 'cod',
     paymentLabel: 'Paiement à la livraison',
+    status: 'pending',
     carrier: CHECKOUT.shipping === 'assembly' ? 'Darty Pro' : 'Geodis',
     eta: new Date(Date.now() + 3*86400000).toLocaleDateString('fr-FR')
   };
@@ -1442,7 +816,7 @@ function confirmOrder(){
   saveCart();
   renderProducts();
   goToStep(5);
-  showToast('Commande ' + order.number + ' confirmée — paiement à la livraison','success');
+  showToast('Commande ' + order.number + ' confirmée','success');
 }
 
 /* ============================================================
@@ -1452,30 +826,21 @@ function openProduct(sku){
   const p = PRODUCTS.find(x => x.sku === sku);
   if (!p) return;
   document.getElementById('pmTitle').textContent = p.name;
-  const stockTxt = p.stock > 0
-    ? `<span style="color:var(--green);font-weight:700"><i class="fas fa-check-circle"></i> En stock (${p.stock} unités)</span>`
-    : '<span style="color:var(--red);font-weight:700"><i class="fas fa-times-circle"></i> Rupture de stock</span>';
+  const unavailable = p.stock <= 0 || p.disabled;
+  const stockTxt = unavailable
+    ? `<span style="color:var(--red);font-weight:700"><i class="fas fa-times-circle"></i> ${p.disabled ? 'Indisponible' : 'Rupture de stock'}</span>`
+    : `<span style="color:var(--green);font-weight:700"><i class="fas fa-check-circle"></i> En stock (${p.stock} unités)</span>`;
 
   const swatchesHtml = p.options.map((o,i) => `
     <button class="swatch ${i===0?'active':''}" data-name="${o.name}" data-hex="${o.hex}"
       style="background:${o.hex}"
-      onclick="selectSwatch(this, '${p.sku}')"
+      onclick="selectSwatch(this)"
       title="${o.name}"></button>
   `).join('');
 
-  const mainImg = p.img;
-  const secondImg = p.img2 || null;
-  const thumbsHtml = `
-    <div class="pm-thumb active" style="background-image:url('${mainImg}')" onclick="selectThumb(this,'${mainImg}')"></div>
-    ${secondImg ? `<div class="pm-thumb" style="background-image:url('${secondImg}')" onclick="selectThumb(this,'${secondImg}')"></div>` : ''}
-  `;
-
   document.getElementById('pmBody').innerHTML = `
     <div class="pm-grid">
-      <div>
-        <div class="pm-image" id="pmMainImage" style="background-image:url('${mainImg}')"></div>
-        <div class="pm-thumbs">${thumbsHtml}</div>
-      </div>
+      <div class="pm-image" style="background-image:url('${p.img}')"></div>
       <div>
         <div class="product-cat" style="margin-bottom:6px">${p.category} · ${p.sku}</div>
         <h2 style="font-size:1.5rem;margin-bottom:10px;font-weight:800">${p.name}</h2>
@@ -1493,7 +858,7 @@ function openProduct(sku){
           <i class="fas fa-ruler-combined dim-icon"></i>
           <div class="dim-vals">
             <div><strong>H</strong> ${p.dims.h} cm &nbsp;·&nbsp; <strong>L</strong> ${p.dims.w} cm &nbsp;·&nbsp; <strong>P</strong> ${p.dims.d} cm</div>
-            <div>Poids : ${p.weight} kg · Matériau : ${p.material} · Style : ${p.style}</div>
+            <div>Poids : ${p.weight} kg · Matériau : ${p.material}</div>
           </div>
         </div>
       </div>
@@ -1501,113 +866,21 @@ function openProduct(sku){
 
   document.getElementById('pmFoot').innerHTML = `
     <button class="btn btn-ghost" onclick="closeModal('productModal')">Fermer</button>
-    <button class="btn" ${p.stock<=0?'disabled':''} onclick="addToCart('${p.sku}',1,document.getElementById('pmSelectedFinish').textContent);closeModal('productModal')">
-      ${p.stock<=0 ? 'Indisponible' : '<i class="fas fa-cart-plus"></i> Ajouter au panier'}
+    <button class="btn" ${unavailable?'disabled':''} onclick="addToCart('${p.sku}',1,document.getElementById('pmSelectedFinish').textContent);closeModal('productModal')">
+      ${unavailable ? 'Indisponible' : '<i class="fas fa-cart-plus"></i> Ajouter au panier'}
     </button>`;
   openModal('productModal');
 }
 
-function selectSwatch(el, sku){
+function selectSwatch(el){
   document.querySelectorAll('#pmSwatches .swatch').forEach(s => s.classList.remove('active'));
   el.classList.add('active');
   document.getElementById('pmSelectedFinish').textContent = el.dataset.name;
 }
-function selectThumb(el, url){
-  document.querySelectorAll('.pm-thumb').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('pmMainImage').style.backgroundImage = `url('${url}')`;
-}
 
 /* ============================================================
-   8. SUIVI
+   8. TOAST + UTILS
    ============================================================ */
-function openTracking(){
-  document.getElementById('trackingBody').innerHTML = `
-    <div class="form-group"><label>Numéro de commande</label><input type="text" id="trackNum" placeholder="MBP-XXXXXXXX"></div>
-    <div id="trackResult"></div>`;
-  openModal('trackingModal');
-}
-function simulateTracking(){
-  const num = document.getElementById('trackNum').value.trim();
-  const result = document.getElementById('trackResult');
-  if (!num){ result.innerHTML = '<p style="color:var(--red);font-size:.86rem">Merci de saisir un numéro.</p>'; return; }
-  const order = ORDERS.find(o => o.number.toUpperCase() === num.toUpperCase());
-  if (!order){
-    result.innerHTML = '<p style="color:var(--red);font-size:.86rem;margin-top:12px">Aucune commande trouvée.</p>';
-    return;
-  }
-  result.innerHTML = `
-    <div class="tracking-box" style="margin-top:16px">
-      <p style="font-size:.86rem"><strong>Statut :</strong> En préparation</p>
-      <p style="font-size:.86rem"><strong>Transporteur :</strong> ${order.carrier}</p>
-      <p style="font-size:.86rem"><strong>Estimation :</strong> ${order.eta}</p>
-      <div class="tracking-steps">
-        <div class="tracking-step done"><div class="dot"><i class="fas fa-check"></i></div>Confirmée</div>
-        <div class="tracking-step done"><div class="dot"><i class="fas fa-box"></i></div>Préparation</div>
-        <div class="tracking-step"><div class="dot"><i class="fas fa-truck"></i></div>Expédiée</div>
-        <div class="tracking-step"><div class="dot"><i class="fas fa-home"></i></div>Livrée</div>
-      </div>
-    </div>`;
-}
-
-/* ============================================================
-   9. COMMAND PALETTE ⌘K
-   ============================================================ */
-function openCmdK(){
-  const o = document.getElementById('cmdkOverlay');
-  o.classList.add('active');
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => document.getElementById('cmdkInput').focus(), 100);
-  renderCmdK('');
-}
-function closeCmdK(){
-  document.getElementById('cmdkOverlay').classList.remove('active');
-  document.body.style.overflow = '';
-}
-function renderCmdK(query){
-  const q = query.toLowerCase().trim();
-  const results = [];
-  const actions = [
-    { icon:'fa-shopping-bag', title:'Ouvrir le panier', sub:'Voir vos articles', fn:'openCart()' },
-    { icon:'fa-truck', title:'Suivi de commande', sub:'Rechercher un numéro', fn:'openTracking()' },
-    { icon:'fa-ruler-combined', title:'Voir tous les bureaux', sub:'Filtrer par catégorie', fn:"quickFilter('bureau')" },
-    { icon:'fa-chair', title:'Voir les chaises', sub:'Ergonomie & confort', fn:"quickFilter('chaise')" },
-  ];
-  actions.forEach(a => {
-    if (!q || a.title.toLowerCase().includes(q) || a.sub.toLowerCase().includes(q)) results.push(a);
-  });
-  PRODUCTS.forEach(p => {
-    if (!q || p.name.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q) || p.category.includes(q)) {
-      results.push({ icon:'fa-cube', title:p.name, sub:`${p.sku} · ${p.price}$`, fn:`openProduct('${p.sku}')` });
-    }
-  });
-  const container = document.getElementById('cmdkResults');
-  if (!results.length){
-    container.innerHTML = '<div style="padding:24px;text-align:center;color:#8892A0;font-size:.88rem">Aucun résultat</div>';
-    return;
-  }
-  container.innerHTML = results.slice(0,8).map(r => `
-    <div class="cmdk-item" onclick="closeCmdK();${r.fn}">
-      <i class="fas ${r.icon}"></i>
-      <div class="cmdk-item-text">
-        <strong>${r.title}</strong>
-        <small>${r.sub}</small>
-      </div>
-      <i class="fas fa-arrow-right" style="color:#8892A0;font-size:.8rem;width:auto;background:none;height:auto"></i>
-    </div>
-  `).join('');
-}
-
-/* ============================================================
-   10. FAVORIS + TOAST + UTILS
-   ============================================================ */
-function toggleFav(sku){
-  const idx = FAVORITES.indexOf(sku);
-  if (idx >= 0) FAVORITES.splice(idx,1); else FAVORITES.push(sku);
-  saveFav();
-  renderProducts();
-}
-
 let toastTimer;
 function showToast(msg, type='success'){
   const t = document.getElementById('toast');
@@ -1618,46 +891,35 @@ function showToast(msg, type='success'){
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
 }
-
 function goHome(){ window.scrollTo({top:0,behavior:'smooth'}); }
 function openModal(id){ document.getElementById(id).classList.add('active'); document.body.style.overflow='hidden'; }
 function closeModal(id){ document.getElementById(id).classList.remove('active'); document.body.style.overflow=''; }
 
 /* ============================================================
-   11. INIT
+   9. INIT
    ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   updateCartCount();
   renderProducts();
 
-  ['searchInput','fCategory','fMaterial','fStyle','fPrice','fHeight','fWidth','fDepth','fInStock']
-    .forEach(id => {
-      const el = document.getElementById(id);
-      if (el) el.addEventListener('input', renderProducts);
-      if (el) el.addEventListener('change', renderProducts);
-    });
+  ['searchInput','fCategory','fInStock'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el){
+      el.addEventListener('input', renderProducts);
+      el.addEventListener('change', renderProducts);
+    }
+  });
 
   window.addEventListener('scroll', () => {
     document.getElementById('mainHeader').classList.toggle('scrolled', window.scrollY > 20);
   });
 
   document.addEventListener('keydown', e => {
-    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k'){
-      e.preventDefault();
-      openCmdK();
-    }
     if (e.key === 'Escape'){
-      closeCmdK();
       document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
       if (document.getElementById('cartSlideover').classList.contains('active')) closeCart();
     }
   });
-
-  if (!/Mac|iPhone|iPad/.test(navigator.platform)){
-    document.getElementById('kbdHint').textContent = 'Ctrl K';
-  }
-
-  document.getElementById('cmdkInput').addEventListener('input', e => renderCmdK(e.target.value));
 
   document.querySelectorAll('.modal-overlay').forEach(o => {
     o.addEventListener('click', e => { if (e.target === o) closeModal(o.id); });
