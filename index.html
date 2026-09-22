@@ -961,53 +961,53 @@ footer{background:var(--ink);color:#B8C2CE;padding:60px 0 30px;margin-top:40px}
    ============================================================ */
 const PRODUCTS = [
   // BUREAUX
-  { sku:'BUR-001', name:'Bureau Agent 1m20', category:'bureau', price:65, oldPrice:null, material:'bois', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:75,w:120,d:60}, weight:35, leadTime:'48h',
+  { sku:'BUR-001', name:'Bureau Agent 1m20', category:'bureau', price:6, oldPrice:20, material:'bois', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:75,w:120,d:60}, weight:35, leadTime:'48h',
     img:'images/bureau-agent-1m20.jpg',
     
     options:[{name:'Chêne clair',hex:'#D9C6B0'},{name:'Blanc',hex:'#F2F2F2'}] },
-  { sku:'BUR-002', name:'Bureau Directeur Noyer', category:'bureau', price:1290, oldPrice:1590, material:'bois', style:'moderne', rating:4.8, promo:true, stock:5, dims:{h:75,w:180,d:80}, weight:60, leadTime:'5 jours',
+  { sku:'BUR-002', name:'Bureau Directeur Noyer', category:'bureau', price:50, oldPrice:100, material:'bois', style:'moderne', rating:4.8, promo:true, stock:5, dims:{h:75,w:180,d:80}, weight:60, leadTime:'5 jours',
     img:'images/bureau-directeur-noyer.jpg',
     
     options:[{name:'Noyer',hex:'#7B5233'},{name:'Chêne foncé',hex:'#5C4033'}] },
-  { sku:'BUR-003', name:'Bureau Directeur B202', category:'bureau', price:249, oldPrice:null, material:'bois', style:'moderne', rating:4.3, promo:false, stock:20, dims:{h:75,w:100,d:50}, weight:25, leadTime:'48h',
+  { sku:'BUR-003', name:'Bureau Directeur B202', category:'bureau', price:49, oldPrice:150, material:'bois', style:'moderne', rating:4.3, promo:false, stock:20, dims:{h:75,w:100,d:50}, weight:25, leadTime:'48h',
     img:'images/bureau-agent-b202.jpg',
     
     options:[{name:'Noir',hex:'#222'},{name:'Chêne clair',hex:'#D9C6B0'}] },
   
   // CHAISES
-  { sku:'CHA-001', name:'Fauteuil Président Cuir Noir', category:'chaise', price:499, oldPrice:599, material:'tissu', style:'confort', rating:4.9, promo:true, stock:10, dims:{h:110,w:65,d:65}, weight:22, leadTime:'48h',
+  { sku:'CHA-001', name:'Fauteuil Président Cuir Noir', category:'chaise', price:49, oldPrice:90, material:'tissu', style:'confort', rating:4.9, promo:true, stock:10, dims:{h:110,w:65,d:65}, weight:22, leadTime:'48h',
     img:'images/fauteuil-president-cuir-noir.jpg',
     
     options:[{name:'Noir',hex:'#222'},{name:'Marron',hex:'#8B4A2B'}] },
-  { sku:'CHA-002', name:'Chaise Ergonomique Dossier Maillé', category:'chaise', price:199, oldPrice:null, material:'tissu', style:'ergonomique', rating:4.7, promo:false, stock:30, dims:{h:105,w:60,d:60}, weight:15, leadTime:'48h',
+  { sku:'CHA-002', name:'Chaise Ergonomique Dossier Maillé', category:'chaise', price:19, oldPrice:60, material:'tissu', style:'ergonomique', rating:4.7, promo:false, stock:30, dims:{h:105,w:60,d:60}, weight:15, leadTime:'48h',
     img:'images/chaise-ergonomique-dossier-maille.jpg',
     
     options:[{name:'Noir',hex:'#222'},{name:'Gris',hex:'#A0A5B0'}] },
-  { sku:'CHA-003', name:'Chaise Visiteur Maille Noire', category:'chaise', price:149, oldPrice:null, material:'metal', style:'moderne', rating:4.4, promo:false, stock:25, dims:{h:95,w:58,d:58}, weight:12, leadTime:'48h',
+  { sku:'CHA-003', name:'Chaise Visiteur Maille Noire', category:'chaise', price:49, oldPrice:80, material:'metal', style:'moderne', rating:4.4, promo:false, stock:25, dims:{h:95,w:58,d:58}, weight:12, leadTime:'48h',
     img:'images/chaise-visiteur-maille.jpg',
     
     options:[{name:'Noir',hex:'#222'},{name:'Bleu',hex:'#1B3A5C'}] },
 
   // RANGEMENTS
-  { sku:'RAN-001', name:'Armoire Vitrée 3 Portes', category:'rangement', price:899, oldPrice:null, material:'bois', style:'moderne', rating:4.8, promo:false, stock:8, dims:{h:200,w:120,d:45}, weight:80, leadTime:'5 jours',
+  { sku:'RAN-001', name:'Armoire Vitrée 3 Portes', category:'rangement', price:99, oldPrice:120, material:'bois', style:'moderne', rating:4.8, promo:false, stock:8, dims:{h:200,w:120,d:45}, weight:80, leadTime:'5 jours',
     img:'images/armoire-vitree-3-portes.jpg',
     
     options:[{name:'Chêne doré',hex:'#C9A96E'},{name:'Noyer',hex:'#7B5233'}] },
-  { sku:'RAN-002', name:'Armoire Métalique Basse Blanche', category:'rangement', price:299, oldPrice:null, material:'metal', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:90,w:80,d:40}, weight:40, leadTime:'3 jours',
+  { sku:'RAN-002', name:'Armoire Métalique Basse Blanche', category:'rangement', price:29, oldPrice:65, material:'metal', style:'moderne', rating:4.5, promo:false, stock:15, dims:{h:90,w:80,d:40}, weight:40, leadTime:'3 jours',
     img:'images/armoire-basse-blanche.jpg',
     
     options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
-  { sku:'RAN-003', name:'Placart 3 Tiroirs Noyer', category:'rangement', price:189, oldPrice:null, material:'bois', style:'moderne', rating:4.6, promo:false, stock:22, dims:{h:60,w:42,d:55}, weight:20, leadTime:'3 jours',
+  { sku:'RAN-003', name:'Placart 3 Tiroirs Noyer', category:'rangement', price:89, oldPrice:110, material:'bois', style:'moderne', rating:4.6, promo:false, stock:22, dims:{h:60,w:42,d:55}, weight:20, leadTime:'3 jours',
     img:'images/caisson-3-tiroirs.jpg',
     
     options:[{name:'Noyer',hex:'#7B5233'},{name:'Blanc',hex:'#F2F2F2'}] },
-  { sku:'RAN-004', name:'Armoire Vitrée 2 Portes', category:'rangement', price:349, oldPrice:null, material:'metal', style:'industriel', rating:4.3, promo:false, stock:12, dims:{h:180,w:90,d:45}, weight:55, leadTime:'3 jours',
+  { sku:'RAN-004', name:'Armoire Vitrée 2 Portes', category:'rangement', price:49, oldPrice:59, material:'metal', style:'industriel', rating:4.3, promo:false, stock:12, dims:{h:180,w:90,d:45}, weight:55, leadTime:'3 jours',
     img:'images/armoire-metallique-2-portes.jpg',
     
     options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Gris',hex:'#A0A5B0'}] },
   
   // ACCESSOIRES
-  { sku:'ACC-001', name:'Bureau Agent d\'angle', category:'accessoire', price:589, oldPrice:null, material:'bois', style:'moderne', rating:4.6, promo:false, stock:9, dims:{h:75,w:160,d:120}, weight:48, leadTime:'5 jours',
+  { sku:'ACC-001', name:'Bureau Agent d\'angle', category:'accessoire', price:89, oldPrice:99, material:'bois', style:'moderne', rating:4.6, promo:false, stock:9, dims:{h:75,w:160,d:120}, weight:48, leadTime:'5 jours',
     img:'images/bureau-angle-compact.jpg',
     
     options:[{name:'Blanc',hex:'#F2F2F2'},{name:'Chêne clair',hex:'#D9C6B0'}] }
