@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion — MobilierBureauPro</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#F3F4F6;--white:#fff;--ink:#0F1B2D;--ink-soft:#4A5668;--ink-mute:#8892A0;
+  --line:#E5E8ED;--blue:#1B3A5C;--blue-dark:#122842;--blue-light:#E8EEF5;
+  --terracotta:#C97B5A;--green:#3E9B6E;--red:#D0483C;--sage:#6B8E7F;
+  --radius:22px;--radius-sm:14px;--pill:999px;
+  --ease:cubic-bezier(.22,.9,.32,1);
+  --shadow-lg:0 20px 40px rgba(15,27,45,.08);
+  --shadow-xl:0 30px 60px -12px rgba(15,27,45,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:20px;line-height:1.55}
+.auth-card{background:#fff;border-radius:28px;box-shadow:var(--shadow-xl);width:100%;max-width:480px;overflow:hidden;position:relative}
+.auth-head{padding:32px 32px 24px;text-align:center;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-dark) 100%);color:#fff}
+.auth-head .logo{font-size:1.3rem;font-weight:800;letter-spacing:-.03em;margin-bottom:8px}
+.auth-head .logo span{color:var(--terracotta);font-weight:300}
+.auth-head p{font-size:.86rem;opacity:.85;margin-top:6px}
+.auth-body{padding:32px}
+.auth-tabs{display:flex;gap:8px;background:var(--bg);padding:5px;border-radius:14px;margin-bottom:24px}
+.auth-tabs button{flex:1;padding:11px;border-radius:10px;font-weight:600;font-size:.85rem;color:var(--ink-soft);transition:.25s var(--ease);border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.auth-tabs button.active{background:#fff;color:var(--blue);box-shadow:0 2px 8px rgba(15,27,45,.08)}
+.auth-tabs button i{font-size:.9rem}
+
+.step{display:none}
+.step.active{display:block;animation:fadeIn .3s var(--ease)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.78rem;font-weight:700;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px}
+.input-wrap{position:relative}
+.input-wrap i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--ink-mute);font-size:.95rem}
+.input-wrap input{width:100%;padding:14px 16px 14px 44px;border:1.5px solid var(--line);border-radius:14px;font-family:inherit;font-size:.95rem;outline:none;transition:.25s var(--ease);background:#fff}
+.input-wrap input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,58,92,.12)}
+
+.otp-inputs{display:flex;gap:10px;justify-content:center;margin:24px 0}
+.otp-inputs input{width:52px;height:60px;text-align:center;font-size:1.5rem;font-weight:800;border:2px solid var(--line);border-radius:14px;outline:none;transition:.25s var(--ease);font-family:inherit;color:var(--blue)}
+.otp-inputs input:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(27,58,92,.12);transform:translateY(-2px)}
+.otp-inputs input.filled{background:var(--blue-light);border-color:var(--blue)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--blue);color:#fff;font-weight:700;padding:15px 24px;border-radius:var(--pill);border:none;cursor:pointer;font-family:inherit;font-size:.95rem;transition:.3s var(--ease)}
+.btn:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(27,58,92,.3)}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-ghost{background:transparent;color:var(--ink-soft);border:1.5px solid var(--line)}
+.btn-ghost:hover{background:var(--bg);color:var(--ink);transform:none;box-shadow:none}
+.btn-outline{background:transparent;border:1.5px solid var(--blue);color:var(--blue)}
+.btn-outline:hover{background:var(--blue-light)}
+
+.info-box{background:var(--blue-light);border-radius:14px;padding:14px 16px;font-size:.85rem;color:var(--blue);display:flex;align-items:flex-start;gap:10px;margin-bottom:20px}
+.info-box i{margin-top:2px}
+.info-box strong{display:block;margin-bottom:2px}
+
+.resend-row{text-align:center;margin-top:16px;font-size:.84rem;color:var(--ink-mute)}
+.resend-row a{color:var(--blue);font-weight:600;cursor:pointer;text-decoration:none}
+.resend-row a.disabled{color:var(--ink-mute);cursor:not-allowed;pointer-events:none}
+
+.divider{display:flex;align-items:center;gap:12px;margin:20px 0;color:var(--ink-mute);font-size:.78rem}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--line)}
+
+.social-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:13px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-weight:600;font-size:.88rem;color:var(--ink);cursor:pointer;transition:.25s var(--ease);font-family:inherit;margin-bottom:10px}
+.social-btn:hover{border-color:var(--blue);background:var(--blue-light)}
+.social-btn i{font-size:1.05rem}
+.social-btn.gmail i{color:#EA4335}
+.social-btn.phone i{color:var(--blue)}
+
+.back-link{display:inline-flex;align-items:center;gap:6px;color:var(--ink-mute);font-size:.82rem;text-decoration:none;margin-bottom:16px;cursor:pointer;background:none;border:none;font-family:inherit}
+.back-link:hover{color:var(--blue)}
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:14px 24px;border-radius:var(--pill);font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:2000;opacity:0;transition:.35s var(--ease);pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}
+
+.demo-code{position:fixed;top:16px;right:16px;background:var(--terracotta);color:#fff;padding:10px 16px;border-radius:12px;font-size:.82rem;font-weight:700;box-shadow:var(--shadow-lg);z-index:3000;display:none;align-items:center;gap:8px}
+.demo-code.show{display:flex;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+
+@media(max-width:520px){
+  .auth-body{padding:24px}
+  .auth-head{padding:24px}
+  .otp-inputs input{width:44px;height:52px;font-size:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="demo-code" id="demoCode"><i class="fas fa-key"></i> <span id="demoCodeText">Code: 000000</span></div>
+
+<div class="auth-card">
+  <div class="auth-head">
+    <div class="logo">Mobilier<span>Bureau</span>Pro</div>
+    <p>Connectez-vous pour commander et suivre vos livraisons</p>
+  </div>
+
+  <div class="auth-body">
+    <!-- ÉTAPE 1 : CHOIX MÉTHODE -->
+    <div class="step active" id="stepChoice">
+      <button class="social-btn phone" onclick="chooseMethod('phone')">
+        <i class="fas fa-mobile-screen"></i> Continuer avec mon téléphone
+      </button>
+      <button class="social-btn gmail" onclick="chooseMethod('gmail')">
+        <i class="fab fa-google"></i> Continuer avec Gmail
+      </button>
+      <div class="divider">OU</div>
+      <div style="text-align:center;font-size:.82rem;color:var(--ink-mute)">
+        En continuant, vous acceptez nos <a href="#" style="color:var(--blue)">CGU</a>
+      </div>
+    </div>
+
+    <!-- ÉTAPE 2 : SAISIE DU CONTACT -->
+    <div class="step" id="stepContact">
+      <button class="back-link" onclick="goStep('stepChoice')"><i class="fas fa-arrow-left"></i> Retour</button>
+      <h3 style="font-size:1.15rem;margin-bottom:6px" id="contactTitle">Entrez votre numéro</h3>
+      <p style="font-size:.85rem;color:var(--ink-mute);margin-bottom:22px" id="contactSub">Nous vous enverrons un code de vérification</p>
+
+      <div class="form-group" id="phoneGroup">
+        <label>Numéro de téléphone</label>
+        <div class="input-wrap">
+          <i class="fas fa-phone"></i>
+          <input type="tel" id="phoneInput" placeholder="+225 07 00 00 00 00" autocomplete="tel">
+        </div>
+      </div>
+
+      <div class="form-group" id="emailGroup" style="display:none">
+        <label>Adresse Gmail</label>
+        <div class="input-wrap">
+          <i class="fas fa-envelope"></i>
+          <input type="email" id="emailInput" placeholder="vous@gmail.com" autocomplete="email">
+        </div>
+      </div>
+
+      <button class="btn" onclick="sendCode()">
+        <i class="fas fa-paper-plane"></i> Recevoir le code
+      </button>
+    </div>
+
+    <!-- ÉTAPE 3 : VÉRIFICATION OTP -->
+    <div class="step" id="stepOtp">
+      <button class="back-link" onclick="goStep('stepContact')"><i class="fas fa-arrow-left"></i> Modifier</button>
+      <div class="info-box">
+        <i class="fas fa-shield-halved"></i>
+        <div>
+          <strong>Code envoyé</strong>
+          <span id="otpDestination">à votre numéro</span>
+        </div>
+      </div>
+      <h3 style="font-size:1.15rem;margin-bottom:6px;text-align:center">Entrez le code à 6 chiffres</h3>
+      <p style="font-size:.85rem;color:var(--ink-mute);margin-bottom:8px;text-align:center">Vérifiez vos messages</p>
+
+      <div class="otp-inputs" id="otpInputs">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="0">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="1">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="2">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="3">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="4">
+        <input type="text" maxlength="1" inputmode="numeric" data-idx="5">
+      </div>
+
+      <button class="btn" id="verifyBtn" onclick="verifyCode()" disabled>
+        <i class="fas fa-check"></i> Vérifier et continuer
+      </button>
+
+      <div class="resend-row">
+        Code non reçu ? <a id="resendLink" onclick="resendCode()">Renvoyer</a>
+        <span id="resendTimer"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">OK</span></div>
+
+<script>
+/* ============================================================
+   AUTHENTIFICATION — OTP par téléphone / Gmail
+   ============================================================
+   Démo : le code est affiché en haut à droite (simulation SMS/email)
+   En production : brancher sur Twilio (SMS) + SendGrid (email)
+   ============================================================ */
+
+let AUTH = {
+  method: null,
+  contact: '',
+  generatedCode: '',
+  expiresAt: 0,
+  resendCooldown: 0,
+  timerInterval: null,
+  cooldownInterval: null
+};
+
+// Récupérer la redirection demandée (ex: après "Ajouter au panier")
+const urlParams = new URLSearchParams(window.location.search);
+const REDIRECT_TO = urlParams.get('redirect') || 'client-panel.html';
+
+function goStep(id){
+  document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+function chooseMethod(method){
+  AUTH.method = method;
+  const title = document.getElementById('contactTitle');
+  const sub = document.getElementById('contactSub');
+  const phoneGroup = document.getElementById('phoneGroup');
+  const emailGroup = document.getElementById('emailGroup');
+
+  if (method === 'phone'){
+    title.textContent = 'Entrez votre numéro';
+    sub.textContent = 'Nous vous enverrons un code de vérification par SMS';
+    phoneGroup.style.display = 'block';
+    emailGroup.style.display = 'none';
+    setTimeout(() => document.getElementById('phoneInput').focus(), 100);
+  } else {
+    title.textContent = 'Entrez votre Gmail';
+    sub.textContent = 'Nous vous enverrons un code de vérification par email';
+    phoneGroup.style.display = 'none';
+    emailGroup.style.display = 'block';
+    setTimeout(() => document.getElementById('emailInput').focus(), 100);
+  }
+  goStep('stepContact');
+}
+
+function generateCode(){
+  return String(Math.floor(100000 + Math.random() * 900000));
+}
+
+function sendCode(){
+  let contact = '';
+  if (AUTH.method === 'phone'){
+    contact = document.getElementById('phoneInput').value.trim();
+    if (!/^[\+\d\s\-\(\)]{8,}$/.test(contact)){
+      showToast('Numéro de téléphone invalide', 'error'); return;
+    }
+  } else {
+    contact = document.getElementById('emailInput').value.trim().toLowerCase();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact)){
+      showToast('Adresse email invalide', 'error'); return;
+    }
+    if (!contact.endsWith('@gmail.com') && !contact.endsWith('@googlemail.com')){
+      showToast('Merci d\'utiliser une adresse Gmail', 'error'); return;
+    }
+  }
+
+  AUTH.contact = contact;
+  AUTH.generatedCode = generateCode();
+  AUTH.expiresAt = Date.now() + 5 * 60 * 1000; // 5 min
+
+  // SIMULATION : afficher le code à l'écran
+  const demo = document.getElementById('demoCode');
+  document.getElementById('demoCodeText').textContent = 'Code démo : ' + AUTH.generatedCode;
+  demo.classList.add('show');
+
+  // En production, remplacer par :
+  // - Twilio pour SMS : fetch('/api/send-sms', {method:'POST', body: JSON.stringify({to: contact, code: AUTH.generatedCode})})
+  // - SendGrid pour email : fetch('/api/send-email', {...})
+
+  document.getElementById('otpDestination').textContent =
+    AUTH.method === 'phone' ? 'au ' + contact : 'à ' + contact;
+
+  // Réinitialiser les inputs OTP
+  document.querySelectorAll('#otpInputs input').forEach(i => { i.value = ''; i.classList.remove('filled'); });
+  goStep('stepOtp');
+  setTimeout(() => document.querySelector('#otpInputs input[data-idx="0"]').focus(), 100);
+  startResendCooldown(30);
+}
+
+function startResendCooldown(seconds){
+  const link = document.getElementById('resendLink');
+  const timer = document.getElementById('resendTimer');
+  link.classList.add('disabled');
+  AUTH.resendCooldown = seconds;
+  clearInterval(AUTH.cooldownInterval);
+  AUTH.cooldownInterval = setInterval(() => {
+    AUTH.resendCooldown--;
+    if (AUTH.resendCooldown <= 0){
+      clearInterval(AUTH.cooldownInterval);
+      link.classList.remove('disabled');
+      timer.textContent = '';
+    } else {
+      timer.textContent = ' (' + AUTH.resendCooldown + 's)';
+    }
+  }, 1000);
+}
+
+function resendCode(){
+  if (AUTH.resendCooldown > 0) return;
+  sendCode();
+  showToast('Nouveau code envoyé', 'success');
+}
+
+function verifyCode(){
+  const inputs = document.querySelectorAll('#otpInputs input');
+  const code = Array.from(inputs).map(i => i.value).join('');
+
+  if (code.length !== 6){
+    showToast('Entrez les 6 chiffres', 'error'); return;
+  }
+  if (Date.now() > AUTH.expiresAt){
+    showToast('Code expiré, demandez un nouveau code', 'error'); return;
+  }
+  if (code !== AUTH.generatedCode){
+    showToast('Code incorrect', 'error');
+    inputs.forEach(i => i.value = '');
+    inputs[0].focus();
+    return;
+  }
+
+  // ✅ Connexion réussie
+  const user = {
+    id: 'USR-' + Date.now().toString().slice(-8),
+    method: AUTH.method,
+    contact: AUTH.contact,
+    name: AUTH.method === 'phone' ? 'Client ' + AUTH.contact.slice(-4) : AUTH.contact.split('@')[0],
+    loggedInAt: new Date().toISOString()
+  };
+  localStorage.setItem('mbp_user', JSON.stringify(user));
+
+  showToast('Connexion réussie ! Redirection...', 'success');
+  document.getElementById('demoCode').classList.remove('show');
+
+  setTimeout(() => {
+    window.location.href = REDIRECT_TO;
+  }, 700);
+}
+
+/* ===== OTP INPUTS : navigation auto ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const inputs = document.querySelectorAll('#otpInputs input');
+  inputs.forEach((input, idx) => {
+    input.addEventListener('input', e => {
+      e.target.value = e.target.value.replace(/\D/g, '');
+      if (e.target.value){
+        e.target.classList.add('filled');
+        if (idx < inputs.length - 1) inputs[idx + 1].focus();
+      } else {
+        e.target.classList.remove('filled');
+      }
+      checkOtpComplete();
+    });
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !e.target.value && idx > 0){
+        inputs[idx - 1].focus();
+        inputs[idx - 1].value = '';
+        inputs[idx - 1].classList.remove('filled');
+        checkOtpComplete();
+      }
+      if (e.key === 'Enter') verifyCode();
+    });
+    input.addEventListener('paste', e => {
+      e.preventDefault();
+      const paste = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+      paste.split('').forEach((c, i) => {
+        if (inputs[i]){ inputs[i].value = c; inputs[i].classList.add('filled'); }
+      });
+      checkOtpComplete();
+      const last = Math.min(paste.length, inputs.length - 1);
+      inputs[last].focus();
+    });
+  });
+
+  // Touche Entrée sur les champs contact
+  document.getElementById('phoneInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendCode(); });
+  document.getElementById('emailInput').addEventListener('keydown', e => { if (e.key === 'Enter') sendCode(); });
+});
+
+function checkOtpComplete(){
+  const inputs = document.querySelectorAll('#otpInputs input');
+  const code = Array.from(inputs).map(i => i.value).join('');
+  document.getElementById('verifyBtn').disabled = code.length !== 6;
+}
+
+let toastTimer;
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.className = 'toast show ' + (type === 'error' ? 'error' : 'success');
+  t.querySelector('i').className = type === 'error' ? 'fas fa-exclamation-circle' : 'fas fa-check-circle';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mon espace client — MobilierBureauPro</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --bg:#F3F4F6;--white:#fff;--ink:#0F1B2D;--ink-soft:#4A5668;--ink-mute:#8892A0;
+  --line:#E5E8ED;--line-soft:#EEF1F5;
+  --blue:#1B3A5C;--blue-dark:#122842;--blue-light:#E8EEF5;
+  --sage:#6B8E7F;--sage-light:#E8F0EC;
+  --terracotta:#C97B5A;--terracotta-light:#FBEFE9;
+  --amber:#E8A33D;--green:#3E9B6E;--red:#D0483C;
+  --radius:22px;--radius-sm:14px;--pill:999px;
+  --ease:cubic-bezier(.22,.9,.32,1);
+  --shadow-xs:0 1px 2px rgba(15,27,45,.04);
+  --shadow-sm:0 4px 12px rgba(15,27,45,.05);
+  --shadow-md:0 10px 30px rgba(15,27,45,.06);
+  --shadow-lg:0 20px 40px rgba(15,27,45,.08);
+  --shadow-xl:0 30px 60px -12px rgba(15,27,45,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.025em;line-height:1.2}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* HEADER CLIENT */
+.client-header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
+.client-header .container{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;gap:20px;flex-wrap:wrap}
+.client-logo{font-size:1.2rem;font-weight:800;color:var(--blue);letter-spacing:-.03em}
+.client-logo span{color:var(--terracotta);font-weight:300}
+.user-menu{display:flex;align-items:center;gap:14px}
+.user-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--sage));color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem}
+.user-info{display:flex;flex-direction:column;line-height:1.2}
+.user-info strong{font-size:.88rem;font-weight:700}
+.user-info small{font-size:.75rem;color:var(--ink-mute)}
+.logout-btn{padding:9px 16px;border-radius:var(--pill);background:var(--bg);color:var(--ink-soft);font-size:.82rem;font-weight:600;display:flex;align-items:center;gap:6px;transition:.25s var(--ease)}
+.logout-btn:hover{background:var(--terracotta-light);color:var(--terracotta)}
+
+/* LAYOUT */
+.panel-layout{display:grid;grid-template-columns:240px 1fr;gap:28px;padding:32px 0 60px}
+.panel-nav{background:#fff;border-radius:var(--radius);padding:12px;box-shadow:var(--shadow-xs);height:fit-content;position:sticky;top:90px}
+.panel-nav button{display:flex;align-items:center;gap:12px;width:100%;padding:13px 16px;border-radius:14px;color:var(--ink-soft);font-weight:600;font-size:.88rem;text-align:left;transition:.25s var(--ease);margin-bottom:4px}
+.panel-nav button i{width:20px;text-align:center;font-size:.95rem}
+.panel-nav button:hover{background:var(--blue-light);color:var(--blue)}
+.panel-nav button.active{background:var(--blue);color:#fff}
+.panel-nav button .badge-count{margin-left:auto;background:var(--terracotta);color:#fff;font-size:.7rem;padding:2px 8px;border-radius:20px;font-weight:700}
+.panel-nav button.active .badge-count{background:rgba(255,255,255,.25)}
+
+/* CONTENT */
+.panel-content{min-width:0}
+.panel-view{display:none}
+.panel-view.active{display:block;animation:fadeIn .3s var(--ease)}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.panel-title{font-size:1.6rem;margin-bottom:6px;font-weight:800;letter-spacing:-.03em}
+.panel-sub{color:var(--ink-soft);font-size:.92rem;margin-bottom:28px}
+
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:28px}
+.stat-card{background:#fff;border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-xs);border:1px solid var(--line-soft)}
+.stat-card .label{font-size:.75rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.06em;font-weight:700;margin-bottom:6px}
+.stat-card .value{font-size:1.8rem;font-weight:800;color:var(--blue);letter-spacing:-.02em}
+.stat-card .sub{font-size:.78rem;color:var(--ink-mute);margin-top:4px}
+
+/* COMMANDES */
+.order-card{background:#fff;border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-xs);border:1px solid var(--line-soft);margin-bottom:16px;transition:.3s var(--ease)}
+.order-card:hover{box-shadow:var(--shadow-sm);border-color:var(--line)}
+.order-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;margin-bottom:18px;padding-bottom:16px;border-bottom:1px solid var(--line-soft)}
+.order-num{font-family:monospace;font-weight:800;color:var(--blue);font-size:1rem}
+.order-meta{font-size:.82rem;color:var(--ink-mute);margin-top:4px}
+.order-total{text-align:right}
+.order-total .amount{font-size:1.4rem;font-weight:800;color:var(--blue)}
+.order-total .label{font-size:.75rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+
+.order-items{display:flex;flex-direction:column;gap:12px}
+.order-item{display:grid;grid-template-columns:64px 1fr auto;gap:14px;align-items:center;padding:12px;background:var(--bg);border-radius:14px}
+.order-item-img{width:64px;height:64px;border-radius:12px;background-size:cover;background-position:center;background-color:var(--line-soft)}
+.order-item-info strong{display:block;font-size:.9rem;font-weight:700;margin-bottom:2px}
+.order-item-info small{font-size:.78rem;color:var(--ink-mute);display:block;margin-bottom:6px}
+.order-item-price{font-weight:800;color:var(--blue);text-align:right;font-size:.92rem}
+
+/* BADGES DE STATUT ARTICLE */
+.item-status{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:var(--pill);font-size:.7rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase}
+.item-status.pending{background:rgba(232,163,61,.15);color:var(--amber)}
+.item-status.shipping{background:rgba(74,184,216,.15);color:#4AB8D8}
+.item-status.delivered{background:rgba(62,155,110,.15);color:var(--green)}
+.item-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
+
+/* TIMELINE DE SUIVI */
+.tracking-timeline{display:flex;justify-content:space-between;margin:20px 0 8px;position:relative;padding:0 10px}
+.tracking-timeline::before{content:'';position:absolute;top:14px;left:30px;right:30px;height:2px;background:var(--line);z-index:0}
+.tl-step{position:relative;z-index:1;text-align:center;flex:1;font-size:.72rem;color:var(--ink-mute);font-weight:600}
+.tl-dot{width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid var(--line);margin:0 auto 8px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:var(--ink-mute);transition:.3s var(--ease)}
+.tl-step.done .tl-dot{background:var(--green);border-color:var(--green);color:#fff}
+.tl-step.done{color:var(--green)}
+.tl-step.current .tl-dot{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 0 0 4px rgba(27,58,92,.15)}
+.tl-step.current{color:var(--blue)}
+
+/* PROFIL */
+.profile-card{background:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-xs);border:1px solid var(--line-soft);max-width:640px}
+.profile-field{margin-bottom:18px}
+.profile-field label{display:block;font-size:.75rem;font-weight:700;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.profile-field .value{padding:12px 16px;background:var(--bg);border-radius:12px;font-size:.92rem;font-weight:500}
+
+.empty-state{text-align:center;padding:60px 20px;color:var(--ink-mute);background:#fff;border-radius:var(--radius);border:1px solid var(--line-soft)}
+.empty-state i{font-size:3.5rem;color:var(--line);margin-bottom:18px;display:block}
+.empty-state h3{font-size:1.1rem;color:var(--ink);margin-bottom:8px;font-weight:700}
+.empty-state p{margin-bottom:20px;font-size:.9rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--blue);color:#fff;font-weight:600;padding:12px 24px;border-radius:var(--pill);transition:.3s var(--ease);font-size:.88rem;border:none;cursor:pointer;font-family:inherit}
+.btn:hover{background:var(--blue-dark);transform:translateY(-2px);box-shadow:0 12px 24px -8px rgba(27,58,92,.3)}
+.btn-outline{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
+
+.toast{position:fixed;bottom:28px;left:50%;transform:translate(-50%,30px);background:var(--ink);color:#fff;padding:14px 24px;border-radius:var(--pill);font-weight:600;font-size:.88rem;display:flex;align-items:center;gap:10px;z-index:2000;opacity:0;transition:.35s var(--ease);pointer-events:none}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.toast.success{background:var(--green)}
+.toast.error{background:var(--red)}
+
+@media (max-width:900px){
+  .panel-layout{grid-template-columns:1fr;gap:16px}
+  .panel-nav{position:relative;top:0;display:flex;overflow-x:auto;gap:6px;padding:8px}
+  .panel-nav button{white-space:nowrap;margin-bottom:0;padding:10px 14px}
+  .panel-nav button span:not(.badge-count){display:none}
+  .panel-nav button i{width:auto}
+}
+@media (max-width:640px){
+  .container{padding:0 16px}
+  .order-item{grid-template-columns:56px 1fr;gap:12px}
+  .order-item-price{grid-column:1/-1;text-align:left;margin-top:6px}
+  .tracking-timeline{padding:0}
+}
+</style>
+</head>
+<body>
+
+<header class="client-header">
+  <div class="container">
+    <a href="index.html" class="client-logo">Mobilier<span>Bureau</span>Pro</a>
+    <div class="user-menu">
+      <div class="user-avatar" id="userAvatar">?</div>
+      <div class="user-info">
+        <strong id="userName">Client</strong>
+        <small id="userContact">—</small>
+      </div>
+      <button class="logout-btn" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Déconnexion</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <div class="panel-layout">
+    <!-- NAVIGATION PANEL -->
+    <aside class="panel-nav">
+      <button class="active" data-view="dashboard" onclick="switchView('dashboard')">
+        <i class="fas fa-chart-line"></i> <span>Tableau de bord</span>
+      </button>
+      <button data-view="orders" onclick="switchView('orders')">
+        <i class="fas fa-shopping-bag"></i> <span>Mes commandes</span>
+        <span class="badge-count" id="ordersBadge">0</span>
+      </button>
+      <button data-view="tracking" onclick="switchView('tracking')">
+        <i class="fas fa-truck"></i> <span>Suivi livraison</span>
+      </button>
+      <button data-view="profile" onclick="switchView('profile')">
+        <i class="fas fa-user"></i> <span>Mon profil</span>
+      </button>
+      <button onclick="window.location.href='index.html'">
+        <i class="fas fa-store"></i> <span>Retour boutique</span>
+      </button>
+    </aside>
+
+    <!-- CONTENU -->
+    <section class="panel-content">
+      <!-- VUE TABLEAU DE BORD -->
+      <div class="panel-view active" id="view-dashboard">
+        <h1 class="panel-title">Bonjour, <span id="dashName">Client</span> 👋</h1>
+        <p class="panel-sub">Voici un aperçu de votre activité</p>
+
+        <div class="stats-grid" id="statsGrid"></div>
+
+        <h2 style="font-size:1.15rem;margin-bottom:16px;font-weight:700">Dernières commandes</h2>
+        <div id="recentOrders"></div>
+      </div>
+
+      <!-- VUE COMMANDES -->
+      <div class="panel-view" id="view-orders">
+        <h1 class="panel-title">Mes commandes</h1>
+        <p class="panel-sub">Historique complet de vos achats</p>
+        <div id="ordersList"></div>
+      </div>
+
+      <!-- VUE SUIVI -->
+      <div class="panel-view" id="view-tracking">
+        <h1 class="panel-title">Suivi de livraison</h1>
+        <p class="panel-sub">État en temps réel de chaque article commandé</p>
+        <div id="trackingList"></div>
+      </div>
+
+      <!-- VUE PROFIL -->
+      <div class="panel-view" id="view-profile">
+        <h1 class="panel-title">Mon profil</h1>
+        <p class="panel-sub">Vos informations de connexion</p>
+        <div class="profile-card">
+          <div class="profile-field"><label>Nom</label><div class="value" id="pName">—</div></div>
+          <div class="profile-field"><label>Méthode de connexion</label><div class="value" id="pMethod">—</div></div>
+          <div class="profile-field"><label>Contact</label><div class="value" id="pContact">—</div></div>
+          <div class="profile-field"><label>Membre depuis</label><div class="value" id="pSince">—</div></div>
+          <button class="btn btn-outline" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Se déconnecter</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">OK</span></div>
+
+<script>
+/* ============================================================
+   PANEL CLIENT — Suivi commandes & profil
+   ============================================================ */
+
+const ITEM_STATUSES = [
+  { value:'pending',   label:'En attente',              icon:'fa-hourglass-half', cls:'pending' },
+  { value:'shipping',  label:'En cours d\'expédition',  icon:'fa-truck-fast',     cls:'shipping' },
+  { value:'delivered', label:'Colis livré',             icon:'fa-circle-check',   cls:'delivered' }
+];
+function getStatusLabel(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.label : 'En attente'; }
+function getStatusIcon(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.icon : 'fa-hourglass-half'; }
+function getStatusCls(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.cls : 'pending'; }
+
+let USER = null;
+let MY_ORDERS = [];
+
+function checkAuth(){
+  USER = JSON.parse(localStorage.getItem('mbp_user') || 'null');
+  if (!USER){
+    window.location.href = 'auth.html?redirect=client-panel.html';
+    return false;
+  }
+  return true;
+}
+
+function loadMyOrders(){
+  const all = JSON.parse(localStorage.getItem('mbp_orders') || '[]');
+  // Filtrer les commandes de cet utilisateur
+  MY_ORDERS = all.filter(o => {
+    const c = o.customer || {};
+    return c.contact === USER.contact || c.email === USER.contact || c.phone === USER.contact;
+  }).reverse();
+}
+
+function renderHeader(){
+  const initials = (USER.name || 'C').split(' ').map(n => n[0]).join('').slice(0,2).toUpperCase();
+  document.getElementById('userAvatar').textContent = initials;
+  document.getElementById('userName').textContent = USER.name || 'Client';
+  document.getElementById('userContact').textContent = USER.contact;
+  document.getElementById('dashName').textContent = USER.name || 'Client';
+}
+
+function switchView(view){
+  document.querySelectorAll('.panel-view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + view).classList.add('active');
+  document.querySelectorAll('.panel-nav button').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+  if (view === 'dashboard') renderDashboard();
+  if (view === 'orders') renderOrders();
+  if (view === 'tracking') renderTracking();
+  if (view === 'profile') renderProfile();
+}
+
+function getGlobalStatus(order){
+  const items = order.items || [];
+  if (!items.length) return 'pending';
+  const statuses = items.map(i => i.status || 'pending');
+  const unique = [...new Set(statuses)];
+  if (unique.length === 1) return unique[0];
+  return 'mixed';
+}
+
+function renderDashboard(){
+  const total = MY_ORDERS.length;
+  const delivered = MY_ORDERS.filter(o => getGlobalStatus(o) === 'delivered').length;
+  const pending = MY_ORDERS.filter(o => getGlobalStatus(o) === 'pending').length;
+  const totalSpent = MY_ORDERS.reduce((s,o) => s + (o.total || 0), 0);
+
+  document.getElementById('statsGrid').innerHTML = `
+    <div class="stat-card"><div class="label">Commandes</div><div class="value">${total}</div><div class="sub">Total passé</div></div>
+    <div class="stat-card"><div class="label">En attente</div><div class="value" style="color:var(--amber)">${pending}</div><div class="sub">À venir</div></div>
+    <div class="stat-card"><div class="label">Livrées</div><div class="value" style="color:var(--green)">${delivered}</div><div class="sub">Reçues</div></div>
+    <div class="stat-card"><div class="label">Total dépensé</div><div class="value">${totalSpent.toFixed(0)}$</div><div class="sub">Toutes commandes</div></div>
+  `;
+  document.getElementById('ordersBadge').textContent = pending;
+
+  const recent = MY_ORDERS.slice(0, 3);
+  document.getElementById('recentOrders').innerHTML = recent.length
+    ? recent.map(o => renderOrderCard(o)).join('')
+    : `<div class="empty-state">
+        <i class="fas fa-shopping-bag"></i>
+        <h3>Aucune commande pour l'instant</h3>
+        <p>Vos futures commandes apparaîtront ici</p>
+        <a href="index.html" class="btn"><i class="fas fa-store"></i> Découvrir la boutique</a>
+      </div>`;
+}
+
+function renderOrders(){
+  document.getElementById('ordersList').innerHTML = MY_ORDERS.length
+    ? MY_ORDERS.map(o => renderOrderCard(o)).join('')
+    : `<div class="empty-state">
+        <i class="fas fa-shopping-bag"></i>
+        <h3>Aucune commande</h3>
+        <p>Commencez par explorer notre catalogue</p>
+        <a href="index.html" class="btn"><i class="fas fa-store"></i> Voir la boutique</a>
+      </div>`;
+}
+
+function renderOrderCard(o){
+  const itemsHtml = (o.items || []).map(i => {
+    const st = i.status || 'pending';
+    return `<div class="order-item">
+      <div class="order-item-img" style="background-image:url('${i.img || ''}')"></div>
+      <div class="order-item-info">
+        <strong>${i.name}</strong>
+        <small>${i.options ? i.options + ' · ' : ''}Qté : ${i.qty}</small>
+        <span class="item-status ${getStatusCls(st)}">${getStatusLabel(st)}</span>
+      </div>
+      <div class="order-item-price">${(i.price * i.qty).toFixed(2)}$</div>
+    </div>`;
+  }).join('');
+
+  const globalStatus = getGlobalStatus(o);
+  const statusLabel = globalStatus === 'mixed' ? 'Statuts mixtes' : getStatusLabel(globalStatus);
+
+  return `<div class="order-card">
+    <div class="order-head">
+      <div>
+        <div class="order-num">${o.number}</div>
+        <div class="order-meta">${new Date(o.date).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'})} · ${o.carrier || 'Transporteur'}</div>
+        <div style="margin-top:8px"><span class="item-status ${getStatusCls(globalStatus)}">${statusLabel}</span></div>
+      </div>
+      <div class="order-total">
+        <div class="amount">${(o.total || 0).toFixed(2)}$</div>
+        <div class="label">Total</div>
+      </div>
+    </div>
+    <div class="order-items">${itemsHtml}</div>
+  </div>`;
+}
+
+function renderTracking(){
+  if (!MY_ORDERS.length){
+    document.getElementById('trackingList').innerHTML = `<div class="empty-state">
+      <i class="fas fa-truck"></i>
+      <h3>Aucune livraison en cours</h3>
+      <p>Passez une commande pour suivre son acheminement</p>
+      <a href="index.html" class="btn"><i class="fas fa-store"></i> Voir la boutique</a>
+    </div>`;
+    return;
+  }
+
+  document.getElementById('trackingList').innerHTML = MY_ORDERS.map(o => {
+    const itemsHtml = (o.items || []).map(i => {
+      const st = i.status || 'pending';
+      const steps = ['pending','shipping','delivered'];
+      const currentIdx = steps.indexOf(st);
+      return `<div class="order-item" style="grid-template-columns:1fr">
+        <div>
+          <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px">
+            <div><strong style="font-size:.9rem">${i.name}</strong><br><small style="color:var(--ink-mute);font-size:.78rem">Qté : ${i.qty}${i.options ? ' · ' + i.options : ''}</small></div>
+            <span class="item-status ${getStatusCls(st)}">${getStatusLabel(st)}</span>
+          </div>
+          <div class="tracking-timeline">
+            ${steps.map((s, idx) => {
+              const done = idx < currentIdx;
+              const current = idx === currentIdx;
+              return `<div class="tl-step ${done ? 'done' : ''} ${current ? 'current' : ''}">
+                <div class="tl-dot"><i class="fas ${done ? 'fa-check' : getStatusIcon(s)}"></i></div>
+                ${getStatusLabel(s)}
+              </div>`;
+            }).join('')}
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+
+    return `<div class="order-card">
+      <div class="order-head">
+        <div>
+          <div class="order-num">${o.number}</div>
+          <div class="order-meta">Commandée le ${new Date(o.date).toLocaleDateString('fr-FR')} · ${o.carrier || '—'}</div>
+          <div class="order-meta" style="margin-top:4px">Estimation : <strong>${o.eta || '—'}</strong></div>
+        </div>
+      </div>
+      <div class="order-items">${itemsHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderProfile(){
+  document.getElementById('pName').textContent = USER.name || '—';
+  document.getElementById('pMethod').textContent = USER.method === 'phone' ? 'Téléphone (OTP SMS)' : 'Gmail (OTP email)';
+  document.getElementById('pContact').textContent = USER.contact;
+  document.getElementById('pSince').textContent = new Date(USER.loggedInAt).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'});
+}
+
+function logout(){
+  if (!confirm('Se déconnecter ?')) return;
+  localStorage.removeItem('mbp_user');
+  window.location.href = 'index.html';
+}
+
+let toastTimer;
+function showToast(msg, type='success'){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg;
+  t.className = 'toast show ' + (type === 'error' ? 'error' : 'success');
+  t.querySelector('i').className = type === 'error' ? 'fas fa-exclamation-circle' : 'fas fa-check-circle';
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+}
+
+/* INIT */
+document.addEventListener('DOMContentLoaded', () => {
+  if (!checkAuth()) return;
+  loadMyOrders();
+  renderHeader();
+  renderDashboard();
+
+  window.addEventListener('storage', e => {
+    if (e.key === 'mbp_orders'){ loadMyOrders(); renderDashboard(); }
+  });
+  setInterval(() => {
+    const prev = MY_ORDERS.length;
+    loadMyOrders();
+    if (MY_ORDERS.length !== prev) renderDashboard();
+  }, 3000);
+});
+</script>
+</body>
+</html>
