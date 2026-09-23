@@ -12,6 +12,7 @@
   --line:#2A394B;--line-soft:#233044;--ink:#E8EDF3;--ink-soft:#9FAEC0;--ink-mute:#6B7A8C;
   --blue:#4A90E2;--blue-light:#1E3A5C;--green:#3E9B6E;--green-light:#163A2B;
   --amber:#E8A33D;--amber-light:#3A2E13;--red:#E05A4C;--red-light:#3A1815;--purple:#8B7BD8;
+  --cyan:#4AB8D8;--cyan-light:#1A3A4A;
   --radius:16px;--radius-sm:10px;--ease:cubic-bezier(.22,.9,.32,1);
   --shadow:0 10px 30px rgba(0,0,0,.35);
 }
@@ -90,12 +91,10 @@ tr:hover td{background:rgba(74,144,226,.04)}
 .status{display:inline-flex;align-items:center;gap:6px;padding:5px 12px;border-radius:20px;font-size:.72rem;font-weight:700;letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
 .status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor}
 .status.pending{background:var(--amber-light);color:var(--amber)}
-.status.confirmed{background:var(--blue-light);color:var(--blue)}
-.status.preparing{background:#2D2354;color:var(--purple)}
-.status.shipped{background:#1A3A4A;color:#4AB8D8}
+.status.shipping{background:var(--cyan-light);color:var(--cyan)}
 .status.delivered{background:var(--green-light);color:var(--green)}
+.status.mixed{background:#2D2354;color:var(--purple)}
 .status.cancelled{background:var(--red-light);color:var(--red)}
-.status.paid{background:var(--green-light);color:var(--green)}
 
 .stock-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:6px;font-size:.72rem;font-weight:700;white-space:nowrap}
 .stock-badge.in{background:var(--green-light);color:var(--green)}
@@ -115,7 +114,7 @@ tr:hover td{background:rgba(74,144,226,.04)}
 
 .modal-overlay{position:fixed;inset:0;background:rgba(5,10,18,.75);backdrop-filter:blur(6px);z-index:1000;display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .25s var(--ease)}
 .modal-overlay.active{display:flex;opacity:1}
-.modal{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);max-width:720px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow);transform:translateY(16px);transition:transform .3s var(--ease)}
+.modal{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);max-width:780px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow);transform:translateY(16px);transition:transform .3s var(--ease)}
 .modal-overlay.active .modal{transform:translateY(0)}
 .modal-head{padding:18px 24px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:var(--panel);z-index:2}
 .modal-head h3{font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:10px}
@@ -131,13 +130,36 @@ tr:hover td{background:rgba(74,144,226,.04)}
 .detail-item{background:var(--panel-2);border-radius:var(--radius-sm);padding:12px 14px}
 .detail-item label{display:block;font-size:.7rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px;font-weight:600}
 .detail-item .val{font-weight:600;font-size:.9rem}
-.order-items-list{display:flex;flex-direction:column;gap:8px}
-.order-item{display:flex;gap:12px;align-items:center;background:var(--panel-2);border-radius:var(--radius-sm);padding:10px 12px}
-.order-item-img{width:48px;height:48px;border-radius:8px;background-size:cover;background-position:center;background-color:var(--line);flex-shrink:0}
-.order-item-info{flex:1}
-.order-item-info strong{display:block;font-size:.88rem;font-weight:600}
-.order-item-info small{font-size:.75rem;color:var(--ink-mute)}
-.order-item-price{font-weight:700;font-size:.9rem}
+
+/* ===== ARTICLE AVEC STATUT ÉDITABLE ===== */
+.order-items-list{display:flex;flex-direction:column;gap:10px}
+.order-item{
+  display:grid;grid-template-columns:56px 1fr auto;gap:14px;align-items:center;
+  background:var(--panel-2);border-radius:var(--radius-sm);padding:12px 14px;
+  border:1px solid var(--line-soft);transition:.2s var(--ease);
+}
+.order-item:hover{border-color:var(--line)}
+.order-item-img{width:56px;height:56px;border-radius:10px;background-size:cover;background-position:center;background-color:var(--line);flex-shrink:0}
+.order-item-info{min-width:0}
+.order-item-info strong{display:block;font-size:.88rem;font-weight:600;margin-bottom:2px}
+.order-item-info small{font-size:.75rem;color:var(--ink-mute);display:block;margin-bottom:6px}
+.order-item-price{font-weight:700;font-size:.9rem;text-align:right}
+.order-item-status-select{
+  background:var(--panel);border:1px solid var(--line);color:var(--ink);
+  padding:6px 10px;border-radius:8px;font-size:.78rem;font-weight:600;
+  outline:none;cursor:pointer;transition:.2s var(--ease);width:100%;
+}
+.order-item-status-select:focus{border-color:var(--blue);box-shadow:0 0 0 2px rgba(74,144,226,.2)}
+.order-item-status-select.pending{border-color:var(--amber);color:var(--amber)}
+.order-item-status-select.shipping{border-color:var(--cyan);color:var(--cyan)}
+.order-item-status-select.delivered{border-color:var(--green);color:var(--green)}
+.order-item-status-select option{background:var(--panel);color:var(--ink)}
+
+.item-status-row{display:flex;align-items:center;gap:8px;margin-top:4px}
+.item-status-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;flex-shrink:0}
+.item-status-icon.pending{background:var(--amber-light);color:var(--amber)}
+.item-status-icon.shipping{background:var(--cyan-light);color:var(--cyan)}
+.item-status-icon.delivered{background:var(--green-light);color:var(--green)}
 
 .form-group{margin-bottom:14px}
 .form-group label{display:block;font-size:.78rem;font-weight:600;color:var(--ink-soft);margin-bottom:6px}
@@ -175,6 +197,7 @@ tr:hover td{background:rgba(74,144,226,.04)}
   th,td{padding:10px 12px;font-size:.78rem}
   .topbar-actions{width:100%}
   .topbar-actions .btn{flex:1;justify-content:center}
+  .order-item{grid-template-columns:48px 1fr;gap:10px}
 }
 </style>
 </head>
@@ -230,11 +253,9 @@ tr:hover td{background:rgba(74,144,226,.04)}
         <select id="orderStatusFilter" onchange="renderOrders()">
           <option value="all">Tous les statuts</option>
           <option value="pending">En attente</option>
-          <option value="confirmed">Confirmée</option>
-          <option value="preparing">En préparation</option>
-          <option value="shipped">Expédiée</option>
-          <option value="delivered">Livrée</option>
-          <option value="cancelled">Annulée</option>
+          <option value="shipping">En cours d'expédition</option>
+          <option value="delivered">Colis livré</option>
+          <option value="mixed">Statuts mixtes</option>
         </select>
       </div>
       <div class="panel"><div class="table-wrap" id="ordersTable"></div></div>
@@ -318,6 +339,15 @@ tr:hover td{background:rgba(74,144,226,.04)}
 <div class="toast" id="toast"><i class="fas fa-check-circle"></i> <span id="toastMsg">OK</span></div>
 
 <script>
+/* ============================================================
+   ADMIN — Gestion commandes & stock
+   ============================================================
+   Statuts d'article disponibles :
+   - pending   : En attente
+   - shipping  : En cours d'expédition
+   - delivered : Colis livré
+   ============================================================ */
+
 const DEFAULT_PRODUCTS = [
   { sku:'BUR-001', name:'Bureau Agent 1m20', category:'bureau', price:6, stock:15 },
   { sku:'BUR-002', name:'Bureau Directeur Noyer', category:'bureau', price:50, stock:5 },
@@ -331,6 +361,16 @@ const DEFAULT_PRODUCTS = [
   { sku:'RAN-004', name:'Armoire Vitrée 2 Portes', category:'rangement', price:49, stock:12 },
   { sku:'ACC-001', name:'Bureau Agent d\'angle', category:'accessoire', price:89, stock:9 }
 ];
+
+// ===== STATUTS D'ARTICLE =====
+const ITEM_STATUSES = [
+  { value:'pending',   label:'En attente',              icon:'fa-hourglass-half', cls:'pending' },
+  { value:'shipping',  label:'En cours d\'expédition',  icon:'fa-truck-fast',     cls:'shipping' },
+  { value:'delivered', label:'Colis livré',             icon:'fa-circle-check',   cls:'delivered' }
+];
+function getItemStatusLabel(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.label : 'En attente'; }
+function getItemStatusIcon(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.icon : 'fa-hourglass-half'; }
+function getItemStatusClass(v){ const s = ITEM_STATUSES.find(x => x.value === v); return s ? s.cls : 'pending'; }
 
 let ORDERS = [];
 let STOCK = {};
@@ -361,11 +401,21 @@ function switchView(view){
   if (view === 'settings') renderSettings();
 }
 
+// ===== STATUT GLOBAL D'UNE COMMANDE (dérivé des statuts d'articles) =====
+function getOrderGlobalStatus(order){
+  const items = order.items || [];
+  if (!items.length) return 'pending';
+  const statuses = items.map(i => i.status || 'pending');
+  const unique = [...new Set(statuses)];
+  if (unique.length === 1) return unique[0]; // tous au même statut
+  return 'mixed'; // statuts différents
+}
+
 function renderDashboard(){
   const totalOrders = ORDERS.length;
   const totalRevenue = ORDERS.reduce((s,o) => s + (o.total || 0), 0);
-  const pending = ORDERS.filter(o => (o.status || 'pending') === 'pending').length;
-  const delivered = ORDERS.filter(o => o.status === 'delivered').length;
+  const pending = ORDERS.filter(o => getOrderGlobalStatus(o) === 'pending').length;
+  const delivered = ORDERS.filter(o => getOrderGlobalStatus(o) === 'delivered').length;
   const outOfStock = Object.values(STOCK).filter(s => s.disabled || s.stock <= 0).length;
 
   document.getElementById('statsGrid').innerHTML = `
@@ -374,22 +424,18 @@ function renderDashboard(){
     <div class="stat-card"><i class="fas fa-boxes-stacked stat-icon"></i><div class="label">Articles indisponibles</div><div class="value">${outOfStock}</div><div class="delta ${outOfStock > 0 ? 'danger' : 'up'}"><i class="fas fa-${outOfStock > 0 ? 'exclamation-triangle' : 'check'}"></i>${outOfStock > 0 ? 'Action requise' : 'Tout est OK'}</div></div>
     <div class="stat-card"><i class="fas fa-truck stat-icon"></i><div class="label">Paiement à la livraison</div><div class="value">${ORDERS.filter(o => o.payment === 'cod').length}</div><div class="delta"><i class="fas fa-hand-holding-usd"></i> 100% des commandes</div></div>
   `;
-  document.getElementById('navOrdersCount').textContent = ORDERS.filter(o => (o.status||'pending')==='pending').length;
+  document.getElementById('navOrdersCount').textContent = pending;
   const recent = [...ORDERS].reverse().slice(0, 5);
   document.getElementById('recentOrdersTable').innerHTML = renderOrdersTable(recent, true);
 }
-
-function getStatusLabel(status){
-  const map = {pending:'En attente',confirmed:'Confirmée',preparing:'En préparation',shipped:'Expédiée',delivered:'Livrée',cancelled:'Annulée'};
-  return map[status] || status;
-}
-function getStatusClass(status){ return status || 'pending'; }
 
 function renderOrders(){
   const q = (document.getElementById('orderSearch').value || '').toLowerCase().trim();
   const statusFilter = document.getElementById('orderStatusFilter').value;
   let list = [...ORDERS].reverse();
-  if (statusFilter !== 'all') list = list.filter(o => (o.status || 'pending') === statusFilter);
+  if (statusFilter !== 'all'){
+    list = list.filter(o => getOrderGlobalStatus(o) === statusFilter);
+  }
   if (q){
     list = list.filter(o => {
       const c = o.customer || {};
@@ -409,11 +455,11 @@ function renderOrdersTable(list, compact){
   }
   const cols = compact
     ? `<th>N°</th><th>Client</th><th>Total</th><th>Statut</th><th></th>`
-    : `<th>N° commande</th><th>Client</th><th>Date</th><th>Articles</th><th>Total</th><th>Statut</th><th style="text-align:right">Actions</th>`;
+    : `<th>N° commande</th><th>Client</th><th>Date</th><th>Articles</th><th>Total</th><th>Statut global</th><th style="text-align:right">Actions</th>`;
   return `<table><thead><tr>${cols}</tr></thead><tbody>
     ${list.map(o => {
       const c = o.customer || {};
-      const status = o.status || 'pending';
+      const globalStatus = getOrderGlobalStatus(o);
       const items = (o.items || []).reduce((s,i) => s + i.qty, 0);
       return `<tr>
         <td><span class="order-num">${o.number}</span></td>
@@ -421,7 +467,7 @@ function renderOrdersTable(list, compact){
         ${compact ? '' : `<td><small style="color:var(--ink-mute)">${new Date(o.date).toLocaleDateString('fr-FR')}</small></td>`}
         ${compact ? '' : `<td>${items} article(s)</td>`}
         <td class="total-cell">${(o.total||0).toFixed(2)}$</td>
-        <td><span class="status ${getStatusClass(status)}">${getStatusLabel(status)}</span></td>
+        <td><span class="status ${globalStatus}">${globalStatus === 'mixed' ? 'Statuts mixtes' : getItemStatusLabel(globalStatus)}</span></td>
         <td><div class="row-actions">
           <button class="icon-action" onclick="openOrderDetail('${o.number}')" title="Voir détails"><i class="fas fa-eye"></i></button>
           ${compact ? '' : `<button class="icon-action danger" onclick="deleteOrder('${o.number}')" title="Supprimer"><i class="fas fa-trash"></i></button>`}
@@ -431,19 +477,42 @@ function renderOrdersTable(list, compact){
   </tbody></table>`;
 }
 
+/* ============================================================
+   DÉTAIL COMMANDE — statut éditable pour CHAQUE article
+   ============================================================ */
 function openOrderDetail(number){
   const o = ORDERS.find(x => x.number === number);
   if (!o) return;
   CURRENT_ORDER = o;
   const c = o.customer || {};
-  const status = o.status || 'pending';
-  const itemsHtml = (o.items || []).map(i => `
-    <div class="order-item">
-      <div class="order-item-img" style="background-image:url('${i.img||''}')"></div>
-      <div class="order-item-info"><strong>${i.name}</strong><small>${i.sku || ''} ${i.options ? '· ' + i.options : ''} · Qté : ${i.qty}</small></div>
-      <div class="order-item-price">${(i.price * i.qty).toFixed(2)}$</div>
-    </div>
-  `).join('');
+
+  // Récapitulatif des statuts
+  const statusCounts = { pending:0, shipping:0, delivered:0 };
+  (o.items || []).forEach(i => { statusCounts[i.status || 'pending']++; });
+
+  const itemsHtml = (o.items || []).map((i, idx) => {
+    const st = i.status || 'pending';
+    const stCls = getItemStatusClass(st);
+    const stIcon = getItemStatusIcon(st);
+    const options = ITEM_STATUSES.map(s => `<option value="${s.value}" ${st===s.value?'selected':''}>${s.label}</option>`).join('');
+    return `
+      <div class="order-item">
+        <div class="order-item-img" style="background-image:url('${i.img||''}')"></div>
+        <div class="order-item-info">
+          <strong>${i.name}</strong>
+          <small>${i.sku || ''} ${i.options ? '· ' + i.options : ''} · Qté : ${i.qty} · ${(i.price*i.qty).toFixed(2)}$</small>
+          <div class="item-status-row">
+            <span class="item-status-icon ${stCls}"><i class="fas ${stIcon}"></i></span>
+            <select class="order-item-status-select ${stCls}"
+                    onchange="changeItemStatus('${o.number}', ${idx}, this.value)">
+              ${options}
+            </select>
+          </div>
+        </div>
+        <div class="order-item-price">${(i.price * i.qty).toFixed(2)}$</div>
+      </div>
+    `;
+  }).join('');
 
   document.getElementById('orderModalBody').innerHTML = `
     <div class="detail-section"><h4>Informations commande</h4><div class="detail-grid">
@@ -452,6 +521,7 @@ function openOrderDetail(number){
       <div class="detail-item"><label>Transporteur</label><div class="val">${o.carrier || '—'}</div></div>
       <div class="detail-item"><label>Livraison estimée</label><div class="val">${o.eta || '—'}</div></div>
     </div></div>
+
     <div class="detail-section"><h4>Client</h4><div class="detail-grid">
       <div class="detail-item"><label>Nom</label><div class="val">${(c.first||'') + ' ' + (c.last||'')}</div></div>
       <div class="detail-item"><label>Type</label><div class="val">${c.type === 'pro' ? 'Professionnel' : 'Particulier'}</div></div>
@@ -461,41 +531,73 @@ function openOrderDetail(number){
       ${c.vat ? `<div class="detail-item"><label>TVA</label><div class="val">${c.vat}</div></div>` : ''}
       <div class="detail-item" style="grid-column:1/-1"><label>Adresse</label><div class="val">${c.address || '—'}, ${c.zip || ''} ${c.city || ''}</div></div>
     </div></div>
-    <div class="detail-section"><h4>Articles (${(o.items||[]).length})</h4><div class="order-items-list">${itemsHtml}</div></div>
+
+    <div class="detail-section">
+      <h4>Récapitulatif des statuts</h4>
+      <div class="detail-grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="detail-item"><label><i class="fas fa-hourglass-half" style="color:var(--amber)"></i> En attente</label><div class="val">${statusCounts.pending} article(s)</div></div>
+        <div class="detail-item"><label><i class="fas fa-truck-fast" style="color:var(--cyan)"></i> En expédition</label><div class="val">${statusCounts.shipping} article(s)</div></div>
+        <div class="detail-item"><label><i class="fas fa-circle-check" style="color:var(--green)"></i> Livrés</label><div class="val">${statusCounts.delivered} article(s)</div></div>
+      </div>
+    </div>
+
+    <div class="detail-section">
+      <h4>Articles (${(o.items||[]).length}) — modifiez le statut de chaque article</h4>
+      <div class="order-items-list">${itemsHtml}</div>
+    </div>
+
     <div class="detail-section"><h4>Paiement</h4><div class="detail-grid">
       <div class="detail-item"><label>Mode</label><div class="val">Paiement à la livraison</div></div>
       <div class="detail-item"><label>Total à percevoir</label><div class="val" style="font-size:1.2rem;color:var(--green)">${(o.total||0).toFixed(2)}$</div></div>
     </div></div>
-    <div class="detail-section"><h4>Statut de la commande</h4><div class="form-group">
-      <select id="orderStatusSelect">
-        <option value="pending" ${status==='pending'?'selected':''}>En attente</option>
-        <option value="confirmed" ${status==='confirmed'?'selected':''}>Confirmée</option>
-        <option value="preparing" ${status==='preparing'?'selected':''}>En préparation</option>
-        <option value="shipped" ${status==='shipped'?'selected':''}>Expédiée</option>
-        <option value="delivered" ${status==='delivered'?'selected':''}>Livrée</option>
-        <option value="cancelled" ${status==='cancelled'?'selected':''}>Annulée</option>
-      </select>
-    </div></div>
   `;
+
   document.getElementById('orderModalFoot').innerHTML = `
     <button class="btn btn-ghost" onclick="closeModal('orderModal')">Fermer</button>
     <button class="btn btn-danger" onclick="deleteOrder('${o.number}');closeModal('orderModal')"><i class="fas fa-trash"></i> Supprimer</button>
-    <button class="btn btn-primary" onclick="updateOrderStatus('${o.number}')"><i class="fas fa-save"></i> Enregistrer le statut</button>
+    <button class="btn btn-success" onclick="setAllItemsStatus('${o.number}','delivered')"><i class="fas fa-check-double"></i> Tout marquer livré</button>
   `;
+
   openModal('orderModal');
 }
 
-function updateOrderStatus(number){
-  const o = ORDERS.find(x => x.number === number);
+/* ===== CHANGEMENT DU STATUT D'UN ARTICLE ===== */
+function changeItemStatus(orderNumber, itemIndex, newStatus){
+  const o = ORDERS.find(x => x.number === orderNumber);
   if (!o) return;
-  const newStatus = document.getElementById('orderStatusSelect').value;
-  o.status = newStatus;
-  o.statusUpdatedAt = new Date().toISOString();
+  if (!o.items || !o.items[itemIndex]) return;
+  o.items[itemIndex].status = newStatus;
+  o.items[itemIndex].statusUpdatedAt = new Date().toISOString();
+  // Recalculer le statut global de la commande
+  o.status = getOrderGlobalStatus(o);
   saveOrders();
-  showToast('Statut mis à jour : ' + getStatusLabel(newStatus));
+  showToast('Article mis à jour : ' + getItemStatusLabel(newStatus));
+  // Rafraîchir l'affichage du modal sans le fermer
+  const scrollPos = document.querySelector('#orderModal .modal').scrollTop;
+  openOrderDetail(orderNumber);
+  document.querySelector('#orderModal .modal').scrollTop = scrollPos;
   renderOrders();
   renderDashboard();
 }
+
+/* ===== TOUT MARQUER LIVRÉ ===== */
+function setAllItemsStatus(orderNumber, newStatus){
+  const o = ORDERS.find(x => x.number === orderNumber);
+  if (!o || !o.items) return;
+  o.items.forEach(i => {
+    i.status = newStatus;
+    i.statusUpdatedAt = new Date().toISOString();
+  });
+  o.status = getOrderGlobalStatus(o);
+  saveOrders();
+  showToast('Tous les articles sont maintenant : ' + getItemStatusLabel(newStatus));
+  const scrollPos = document.querySelector('#orderModal .modal').scrollTop;
+  openOrderDetail(orderNumber);
+  document.querySelector('#orderModal .modal').scrollTop = scrollPos;
+  renderOrders();
+  renderDashboard();
+}
+
 function deleteOrder(number){
   if (!confirm('Supprimer définitivement la commande ' + number + ' ?')) return;
   ORDERS = ORDERS.filter(o => o.number !== number);
@@ -514,11 +616,27 @@ function clearAllOrders(){
 }
 function exportOrders(){
   if (!ORDERS.length){ showToast('Aucune commande à exporter', 'error'); return; }
-  const headers = ['Numéro','Date','Client','Email','Téléphone','Adresse','Ville','CP','Type','Articles','Total','Paiement','Statut'];
-  const rows = ORDERS.map(o => {
+  const headers = ['Numéro','Date','Client','Email','Téléphone','Adresse','Ville','CP','Type','Article','Qté','Prix unitaire','Statut article','Total commande','Paiement','Statut global'];
+  const rows = [];
+  ORDERS.forEach(o => {
     const c = o.customer || {};
-    const items = (o.items||[]).map(i => `${i.qty}x ${i.name}`).join(' | ');
-    return [o.number, new Date(o.date).toLocaleString('fr-FR'), `${c.first||''} ${c.last||''}`, c.email||'', c.phone||'', c.address||'', c.city||'', c.zip||'', c.type||'particulier', items, (o.total||0).toFixed(2), 'Paiement à la livraison', getStatusLabel(o.status||'pending')];
+    const globalStatus = getOrderGlobalStatus(o);
+    (o.items||[]).forEach(i => {
+      rows.push([
+        o.number,
+        new Date(o.date).toLocaleString('fr-FR'),
+        `${c.first||''} ${c.last||''}`,
+        c.email||'', c.phone||'', c.address||'', c.city||'', c.zip||'',
+        c.type||'particulier',
+        i.name,
+        i.qty,
+        (i.price||0).toFixed(2),
+        getItemStatusLabel(i.status || 'pending'),
+        (o.total||0).toFixed(2),
+        'Paiement à la livraison',
+        globalStatus === 'mixed' ? 'Statuts mixtes' : getItemStatusLabel(globalStatus)
+      ]);
+    });
   });
   const csv = [headers, ...rows].map(r => r.map(v => `"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n');
   const blob = new Blob(['\uFEFF' + csv], { type:'text/csv;charset=utf-8;' });
@@ -529,6 +647,9 @@ function exportOrders(){
   showToast('Export CSV téléchargé');
 }
 
+/* ============================================================
+   STOCK
+   ============================================================ */
 function renderStock(){
   const q = (document.getElementById('stockSearch').value || '').toLowerCase().trim();
   const catFilter = document.getElementById('stockCatFilter').value;
@@ -623,6 +744,9 @@ function resetStockToDefault(){
   renderStock(); renderDashboard();
 }
 
+/* ============================================================
+   PARAMÈTRES
+   ============================================================ */
 function renderSettings(){
   const s = JSON.parse(localStorage.getItem('mbp_settings') || '{}');
   document.getElementById('setShippingBase').value = s.shippingBase ?? 19.90;
@@ -653,6 +777,9 @@ function clearAllData(){
   renderDashboard(); renderOrders(); renderStock();
 }
 
+/* ============================================================
+   UTILS
+   ============================================================ */
 function openModal(id){ document.getElementById(id).classList.add('active'); document.body.style.overflow = 'hidden'; }
 function closeModal(id){ document.getElementById(id).classList.remove('active'); document.body.style.overflow = ''; }
 
@@ -671,6 +798,9 @@ window.addEventListener('storage', e => {
   if (e.key === 'mbp_stock'){ loadStock(); renderStock(); renderDashboard(); }
 });
 
+/* ============================================================
+   INIT
+   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   loadOrders();
   loadStock();
@@ -681,6 +811,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.active').forEach(m => closeModal(m.id));
   });
+  // Polling de secours
   setInterval(() => {
     const fresh = JSON.parse(localStorage.getItem('mbp_orders') || '[]');
     if (fresh.length !== ORDERS.length){ loadOrders(); renderOrders(); renderDashboard(); }
